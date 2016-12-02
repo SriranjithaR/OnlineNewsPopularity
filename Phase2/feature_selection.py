@@ -9,7 +9,7 @@ class feature_selection:
     ,clf):
         print "\nApplying SelectKBest"
         skbest_scores = {}
-        for nf in list(range(31,37)):
+        for nf in list(range(1,59)):
             skbest = SelectKBest(f_classif, k = nf )
             x_train_new = skbest.fit_transform(x_train,y_train_binary)
             x_test_new = skbest.transform(x_test)
@@ -36,7 +36,7 @@ class feature_selection:
     ,clf):
         #Applying PCA
         pca_scores = {}
-        for nf in list(range(40,60)):
+        for nf in list(range(1,59)):
             pca = PCA(n_components= nf )
             x_train_new = pca.fit_transform(x_train)
             x_test_new = pca.transform(x_test)

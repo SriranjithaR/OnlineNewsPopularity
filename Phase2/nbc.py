@@ -35,10 +35,9 @@ print "Score : ", score
 print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
 
 #Cross validation
-cval = CV()
 folds = 2
 print "\nManual ",folds," fold cross validation score"
-cval.crossValidation(x_orig_train,y_orig_train_binary,clf,folds);
+CV(x_orig_train,y_orig_train_binary,clf,folds);
 scores = cross_val_score(clf, x_orig_train, y_orig_train_binary, cv=10)
 
 #Checking with inbuilt CV function
@@ -49,4 +48,4 @@ print skfscore
 
 #Plotting ROC curve
 from ROCCurves import ROCCurves as ROC
-ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary)
+ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary,"nbc")

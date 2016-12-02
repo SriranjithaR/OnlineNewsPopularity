@@ -4,28 +4,29 @@ from sklearn.tree import DecisionTreeClassifier as dtc
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import KFold
-from sklearn.model_selection import GridSearchCV
 from cross_validation import cross_validation as CV
 import matplotlib.pyplot as plt
 from feature_selection import feature_selection
 
 #Loading data
-x_train = np.loadtxt('../Data/x_train.txt')
-y_train_binary = np.loadtxt('../Data/y_train_binary.txt')
-x_test = np.loadtxt('../Data/x_test.txt')
-y_test_binary = np.loadtxt('../Data/y_test_binary.txt')
-x_orig_train = np.loadtxt('../Data/x_orig_train.txt')
-y_orig_train_binary = np.loadtxt('../Data/y_orig_train_binary.txt')
+x_train = np.loadtxt('../Data_66/x_train.txt')
+y_train_binary = np.loadtxt('../Data_66/y_train_binary.txt')
+x_test = np.loadtxt('../Data_66/x_test.txt')
+y_test_binary = np.loadtxt('../Data_66/y_test_binary.txt')
+x_orig_train = np.loadtxt('../Data_66/x_orig_train.txt')
+y_orig_train_binary = np.loadtxt('../Data_66/y_orig_train_binary.txt')
 
 #Modeling classifier
 clf = dtc(max_depth = 3)
 
 #Calling feature selection methods
-fs = feature_selection()
-clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
+#fs = feature_selection()
+#clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
 #clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
 
 #Printing scores
+clf.fit (x_train,y_train_binary)
+y_out = clf.predict(x_test)
 aScore = accuracy_score(y_test_binary,y_out)
 print "Accuracy Score : ",aScore
 score = clf.score(x_test,y_test_binary)
@@ -34,10 +35,10 @@ print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
 
 
 #Cross validation
-cval = CV()
+#cval = CV()
 folds = 2
 print "\nManual ",folds," fold cross validation score"
-cval.crossValidation(x_orig_train,y_orig_train_binary,clf,folds);
+CV(x_orig_train,y_orig_train_binary,clf,folds);
 scores = cross_val_score(clf, x_orig_train, y_orig_train_binary, cv=10)
 
 #Checking with inbuilt CV function
@@ -48,6 +49,7 @@ print skfscore
 
 #Manual Parameter tuning
 print "\nManual parameter tuning"
+print "Tuning max depth"
 max_depth_scores = {}
 for i in range(2,20,2):
     clf = dtc(max_depth = i)
@@ -57,17 +59,6 @@ for i in range(2,20,2):
     max_depth_scores[i]=sc
 opt_max_depth = max(max_depth_scores,key = max_depth_scores.get)
 print "Best parameter : ",opt_max_depth
-
-#Parameter tuning using grid search CV
-print "\nChecking with inbuilt parameter tuning function"
-parameters = {'max_depth' : list(range(2,20,2)) }
-gscv = GridSearchCV(clf,parameters,cv=skf)
-gscv.fit(x_train,y_train_binary)
-print "Best score : ", gscv.score(x_test,y_test_binary)
-print "Best estimator : ",gscv.best_estimator_
-best_param = gscv.best_params_
-print "Best parameter : ",best_param
-# opt_max_depth = best_param['max_depth']
 
 #Printing final result
 clf = dtc(max_depth = opt_max_depth)
@@ -91,4 +82,7 @@ plt.savefig('DecTreeClassifier.png')
 
 #Plotting ROC curve
 from ROCCurves import ROCCurves as ROC
-ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary)
+ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary,"decTree")
+
+from DatasetVsAccuracy import DatasetVsAccuracyPlot as dvap
+dvap(clf,x_train,y_train_binary,x_test,y_test_binary)

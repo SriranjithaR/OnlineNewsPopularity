@@ -36,10 +36,9 @@ print "Score : ", score
 
 
 #Cross validation
-cval = CV()
 folds = 2
 print "\nManual ",folds," fold cross validation score"
-cval.crossValidation(x_orig_train,y_orig_train_binary,clf,folds);
+CV(x_orig_train,y_orig_train_binary,clf,folds);
 scores = cross_val_score(clf, x_orig_train, y_orig_train_binary, cv=10)
 
 #Checking with inbuilt CV function
@@ -50,6 +49,7 @@ print skfscore
 
 #Manual Parameter tuning
 print "\nManual parameter tuning"
+print "Tuning alpha values"
 alpha_scores = {}
 for i in  [0.0001,0.001,0.01,0.1,1,10]:
     clf = MLPClassifier(alpha=i)
@@ -61,18 +61,6 @@ opt_alpha = max(alpha_scores,key = alpha_scores.get)
 print "Best parameter : ",opt_alpha
 clf = MLPClassifier(alpha=opt_alpha)
 clf.fit (x_train,y_train_binary)
-
-#Parameter tuning using grid search CV
-#print "\nChecking with inbuilt parameter tuning function"
-parameters = {'alpha' : [0.0001,0.001,0.01,0.1,1,10] }
-gscv = GridSearchCV(clf,parameters)
-gscv.fit(x_train,y_train_binary)
-print gscv.score(x_test,y_test_binary)
-print "Best score : ", gscv.score(x_test,y_test_binary)
-print "Best estimator : ",gscv.best_estimator_
-best_param = gscv.best_params_
-print "Best parameter : ",best_param
-# opt_max_depth = best_param['max_depth']
 
 #Printing final result
 clf =  MLPClassifier(alpha=opt_alpha)
@@ -95,4 +83,4 @@ plt.savefig('mlpc.png')
 
 
 from ROCCurves import ROCCurves as ROC
-ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary)
+ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary,"mlpc")

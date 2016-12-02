@@ -2,7 +2,7 @@
 """
 Created on Thu Dec 01 01:38:15 2016
 
-@author: Pinky
+@author: Sriranjitha
 """
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
@@ -12,7 +12,7 @@ from scipy import interp
 import numpy as np
 
 class ROCCurves:
-    def getROCCurves(self,clf,x_train,y_train_binary,x_test,y_test_binary):
+    def getROCCurves(self,clf,x_train,y_train_binary,x_test,y_test_binary,classifier):
         # Plot of a ROC curve for a specific class
         preds = clf.predict_proba(x_test)[:,1]
         fpr = []
@@ -21,6 +21,7 @@ class ROCCurves:
         fpr, tpr, _ = roc_curve(y_test_binary, preds)
         roc_auc = auc(fpr, tpr)
         
+        savename = classifier + 'ROC.png'
         plt.figure()
         plt.plot(fpr, tpr, label='ROC curve (area = %0.2f)' % roc_auc)
         plt.plot([0, 1], [0, 1], 'k--')
@@ -28,7 +29,8 @@ class ROCCurves:
         plt.ylim([0.0, 1.05])
         plt.xlabel('False Positive Rate')
         plt.ylabel('True Positive Rate')
-        plt.title('Receiver operating characteristic example')
+        plt.title('Receiver operating characteristic example') 
+        plt.savefig(savename)
         plt.legend(loc="lower right")
         plt.show()
             
@@ -69,5 +71,7 @@ class ROCCurves:
         plt.xlabel('False Positive Rate')
         plt.ylabel('True Positive Rate')
         plt.title('Receiver operating characteristic example')
+        savename = classifier + 'ROC_kfold.png'
+        plt.savefig(savename)
         plt.legend(loc="lower right")
         plt.show()

@@ -45,10 +45,9 @@ print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
 
 
 #Cross validation
-cval = CV()
 folds = 2
 print "\nManual ",folds," fold cross validation score"
-cval.crossValidation(x_orig_train,y_orig_train_binary,clf,folds);
+CV(x_orig_train,y_orig_train_binary,clf,folds);
 scores = cross_val_score(clf, x_orig_train, y_orig_train_binary, cv=10)
 
 #Checking with inbuilt CV function
@@ -59,6 +58,7 @@ print skfscore
 
 #Manual Parameter tuning
 print "\nManual parameter tuning"
+print "Tuning C values"
 c_scores = {}
 for i in [0.01,0.1,1,10]:
     clf = LR(C = i)
@@ -69,17 +69,6 @@ for i in [0.01,0.1,1,10]:
 opt_c = max(c_scores,key = c_scores.get)
 print "Best parameter : ",opt_c
 # print "Best parameter : ",best_params_
-
-##Parameter tuning using grid search CV
-#print "\nChecking with inbuilt parameter tuning function"
-#parameters = {'max_depth' : list(range(2,20,2)) }
-#gscv = GridSearchCV(clf,parameters,cv=skf)
-#gscv.fit(x_train,y_train_binary)
-#print "Best score : ", gscv.score(x_test,y_test_binary)
-#print "Best estimator : ",gscv.best_estimator_
-#best_param = gscv.best_params_
-#print "Best parameter : ",best_param
-## opt_max_depth = best_param['max_depth']
 
 #Printing final result
 clf =  LR(C = opt_c)
@@ -102,4 +91,4 @@ plt.savefig('LogiisticRegression.png')
 
 #Plotting ROC curve
 from ROCCurves import ROCCurves as ROC
-ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary)
+ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary,"logistic")
