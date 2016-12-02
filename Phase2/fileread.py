@@ -1,4 +1,4 @@
-
+from sklearn.cross_validation import train_test_split
 from pandas import DataFrame, read_csv
 import numpy as np
 import matplotlib.pyplot as plt
@@ -22,6 +22,8 @@ x_orig_train = np.delete(x_orig_train,0,1)
 msk = np.random.rand(len(df)) < 0.8
 train = df[msk]
 test = df[~msk]
+
+#x_train, x_test, y_train, y_test = train_test_split(x_orig_train, y_orig_train, test_size=0.8)
 
 
 # Train data

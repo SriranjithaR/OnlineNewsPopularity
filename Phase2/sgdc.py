@@ -81,3 +81,6 @@ print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
 #
 # plt.title("DecTreeClassifier ")
 # plt.savefig('DecTreeClassifier.png')
+
+from ROCCurves import ROCCurves as ROC
+ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary)

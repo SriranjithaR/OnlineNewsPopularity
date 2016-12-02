@@ -29,9 +29,9 @@ y_orig_train_binary = np.loadtxt('../Data/y_orig_train_binary.txt')
 
 #Modeling classifier
 from sklearn import svm
-svr = svm.SVC(C=1.0, kernel='linear' )
-parameters = {'kernel':('linear', 'rbf'), 'C':[1, 10]}
-clf = GridSearchCV(svr, parameters);
+clf = svm.SVC(C=1.0, kernel='linear' )
+#parameters = {'kernel':('linear', 'rbf'), 'C':[1, 10]}
+#clf = GridSearchCV(svr, parameters);
 clf.fit (x_train,y_train_binary)
 y_out = clf.predict(x_test)
 
@@ -83,3 +83,6 @@ print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
 #
 # plt.title("DecTreeClassifier ")
 # plt.savefig('DecTreeClassifier.png')
+
+from ROCCurves import ROCCurves as ROC
+ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary)

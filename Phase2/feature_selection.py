@@ -29,6 +29,7 @@ class feature_selection:
         clf.fit (x_train,y_train_binary)
         y_out = clf.predict(x_test)
         score = clf.score(x_test,y_test_binary)
+        print "Score : ", score
         return (clf,x_train,x_test,y_out)
 
     def PCASelection(self,x_train,y_train_binary,x_test,y_test_binary
@@ -54,4 +55,5 @@ class feature_selection:
         clf.fit (x_train,y_train_binary)
         y_out = clf.predict(x_test)
         score = clf.score(x_test,y_test_binary)
+        print "Score : ", score
         return (clf,x_train,x_test,y_out)

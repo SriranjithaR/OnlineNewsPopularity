@@ -8,9 +8,10 @@ from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
 from cross_validation import cross_validation as CV
 import matplotlib.pyplot as plt
-from PIL import Image
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import f_classif
+from feature_selection import feature_selection
+from sklearn.metrics import roc_curve, auc
 
 #Loading data
 x_train = np.loadtxt('../Data/x_train.txt')
@@ -23,63 +24,26 @@ y_orig_train_binary = np.loadtxt('../Data/y_orig_train_binary.txt')
 #Modeling classifier
 clf = abc()
 
-# # #Applying PCA
-# # pca_scores = {}
-# # for nf in list(range(45,50)):
-# #     pca = PCA(n_components= nf )
-# #     x_train_new = pca.fit_transform(x_train)
-# #     x_test_new = pca.transform(x_test)
-# #     clf.fit (x_train_new,y_train_binary)
-# #     y_out = clf.predict(x_test_new)
-# #     score = clf.score(x_test_new,y_test_binary)
-# #     print "Score  for " ,nf," features : ",  score
-# #     pca_scores[nf] = score
-# #
-# # max_score_nf = max(pca_scores,key=pca_scores.get)
-# # #max_score_nf = 59
-# # print "Max score was obtained for : ",max_score_nf," features"
-# # pca = PCA(n_components=  max_score_nf)
-# # x_train = pca.fit_transform(x_train)
-# # x_test = pca.transform(x_test)
-#
-# #Applying SelectKBest
-# print "\nApplying SelectKBest"
-# skbest_scores = {}
-# for nf in list(range(55,60)):
-#     skbest = SelectKBest(f_classif, k = nf )
-#     x_train_new = skbest.fit_transform(x_train,y_train_binary)
-#     x_test_new = skbest.transform(x_test)
-#     clf.fit (x_train_new,y_train_binary)
-#     score = clf.score(x_test_new,y_test_binary)
-#     print "Score  for " ,nf," features : ",  score
-#     skbest_scores[nf] = score
-#
-# max_score_nf = max(skbest_scores,key=skbest_scores.get)
-# print "Max score was obtained for : ",max_score_nf," features"
-#
-# #Fitting to best no of features
-# skbest = SelectKBest(f_classif, k = max_score_nf )
-# x_train = skbest.fit_transform(x_train,y_train_binary)
-# x_test = skbest.transform(x_test)
-#
-# clf.fit (x_train,y_train_binary)
-# y_out = clf.predict(x_test)
-#
-# #Printing scores
-# aScore = accuracy_score(y_test_binary,y_out)
-# print "Accuracy Score : ",aScore
-# score = clf.score(x_test,y_test_binary)
-# print "Score : ", score
-# print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
-#
-#
-# #Cross validation
-# cval = CV()
+#Calling feature selection methods
+fs = feature_selection()
+clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
+#clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
+
+#Printing scores
+aScore = accuracy_score(y_test_binary,y_out)
+print "Accuracy Score : ",aScore
+score = clf.score(x_test,y_test_binary)
+print "Score : ", score
+print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
+
+
+#Cross validation
+cval = CV()
 folds = 2
-# print "\nManual ",folds," fold cross validation score"
-# cval.crossValidation(x_orig_train,y_orig_train_binary,clf,folds);
-# scores = cross_val_score(clf, x_orig_train, y_orig_train_binary, cv=10)
-#
+print "\nManual ",folds," fold cross validation score"
+cval.crossValidation(x_orig_train,y_orig_train_binary,clf,folds);
+scores = cross_val_score(clf, x_orig_train, y_orig_train_binary, cv=10)
+
 #Checking with inbuilt CV function
 print "\nChecking with inbuilt function"
 skf =  KFold(n_splits=folds,shuffle = False)
@@ -128,18 +92,22 @@ clf = abc(n_estimators = opt_n_est)
 clf = abc(n_estimators = opt_n_est,learning_rate = opt_learn_rate)
 clf.fit (x_train,y_train_binary)
 sc = clf.score(x_test,y_test_binary)
-print "\nMax score obtained using decision tree : ", sc
+print "\nMax score obtained using AdaBoost Classifier : ", sc
 
 
-# # Plotting figure
-# fig = plt.figure()
-# ax = fig.add_subplot(111)
-#
-# x_axis = np.array(range(1,10))
-# y_axis = means
-# plt.plot(x_axis,y_axis)
-# plt.xlabel('learn_rate')
-# plt.ylabel('Mean scores')
-#
-# plt.title("AdaBoostClassifier ")
-# plt.savefig('AdaBoostClassifier.png')
+# Plotting figure
+fig = plt.figure()
+ax = fig.add_subplot(111)
+
+x_axis = np.array(range(20,70,5))
+y_axis = list(n_est_scores.values())
+plt.plot(x_axis,y_axis)
+plt.xlabel('learn_rate')
+plt.ylabel('Mean scores')
+
+plt.title("AdaBoostClassifier ")
+plt.savefig('AdaBoostClassifier.png')
+
+#Plotting ROC curve
+from ROCCurves import ROCCurves as ROC
+ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary)

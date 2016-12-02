@@ -1,44 +1,105 @@
-from fileread import x_train,y_train,x_test,y_test
+from sklearn.linear_model import LogisticRegression as LR
 import numpy as np
-from sklearn.linear_model import LogisticRegression
-e = 0.5
-C = 1.0
-clf = LogisticRegression(C = 0.01,solver ='sag')
-# num_features = 1
-# from sklearn.decomposition import PCA
-# pca = PCA(n_components=num_features)
-# x_train = pca.fit_transform(x_train)
-# x_test = pca.transform(x_test)
+from sklearn.decomposition import PCA
+from sklearn.metrics import precision_recall_fscore_support as prfs
+from sklearn.model_selection import cross_val_score
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import KFold
+from sklearn.model_selection import GridSearchCV
+from cross_validation import cross_validation as CV
+import matplotlib.pyplot as plt
+from sklearn.feature_selection import SelectKBest
+from sklearn.feature_selection import f_classif
+from feature_selection import feature_selection
+from sklearn.metrics import roc_curve, auc
 
 
+#Loading data
+x_train = np.loadtxt('../Data/x_train.txt')
+y_train_binary = np.loadtxt('../Data/y_train_binary.txt')
+x_test = np.loadtxt('../Data/x_test.txt')
+y_test_binary = np.loadtxt('../Data/y_test_binary.txt')
+x_orig_train = np.loadtxt('../Data/x_orig_train.txt')
+y_orig_train_binary = np.loadtxt('../Data/y_orig_train_binary.txt')
+x_test_copy = x_test
 
-median = np.median(y_train)
 
-print median
+#Modeling the classifier
+clf = LR(C = 1.0,solver ='sag')
 
-y_train_binary = y_train < median
+#Calling feature selection methods
+fs = feature_selection()
+#clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
+clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
 
-y_test_binary = y_test < median
 
-clf.fit (x_train,y_train)
+#clf.fit (x_train,y_train_binary)
+#y_out = clf.predict(x_test)
 
-y_out = clf.predict(x_test)
-# print y_out
-# print y_test
-# from sklearn.metrics import mean_squared_error
-score = clf.score(x_test,y_test)
-print score
-# residual = y_test - y_out
+#Printing scores
+aScore = accuracy_score(y_test_binary,y_out)
+print "Accuracy Score : ",aScore
+score = clf.score(x_test,y_test_binary)
+print "Score : ", score
+print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
 
-# import matplotlib.pyplot as plt
-# # fig1 = plt.figure()
-# x_axis = np.array(range(1,len(residual)+1))
-# # print x_axis.shape
-# # print y_out
-# # print residual
 
-# plt.plot(y_out,residual,'rs')
-# plt.xlabel('Predicted')
-# plt.ylabel('Residuals')
-# plt.title("SVR : Features = "+str(num_features)+" ,Score : "+str(score)+" ,E = "+str(e)+" ,C= "+str(C))
-# plt.savefig('SVR_residual_features_'+str(num_features)+"_E_"+str(e)+"_C_"+str(C)+'.png')
+#Cross validation
+cval = CV()
+folds = 2
+print "\nManual ",folds," fold cross validation score"
+cval.crossValidation(x_orig_train,y_orig_train_binary,clf,folds);
+scores = cross_val_score(clf, x_orig_train, y_orig_train_binary, cv=10)
+
+#Checking with inbuilt CV function
+print "\nChecking with inbuilt function"
+skf =  KFold(n_splits=folds,shuffle = False)
+skfscore = cross_val_score(clf, x_orig_train, y_orig_train_binary, cv=skf)
+print skfscore
+
+#Manual Parameter tuning
+print "\nManual parameter tuning"
+c_scores = {}
+for i in [0.01,0.1,1,10]:
+    clf = LR(C = i)
+    clf.fit (x_train,y_train_binary)
+    sc = clf.score(x_test,y_test_binary)
+    print 'Score for ',i,':',sc
+    c_scores[i]=sc
+opt_c = max(c_scores,key = c_scores.get)
+print "Best parameter : ",opt_c
+# print "Best parameter : ",best_params_
+
+##Parameter tuning using grid search CV
+#print "\nChecking with inbuilt parameter tuning function"
+#parameters = {'max_depth' : list(range(2,20,2)) }
+#gscv = GridSearchCV(clf,parameters,cv=skf)
+#gscv.fit(x_train,y_train_binary)
+#print "Best score : ", gscv.score(x_test,y_test_binary)
+#print "Best estimator : ",gscv.best_estimator_
+#best_param = gscv.best_params_
+#print "Best parameter : ",best_param
+## opt_max_depth = best_param['max_depth']
+
+#Printing final result
+clf =  LR(C = opt_c)
+clf.fit (x_train,y_train_binary)
+sc = clf.score(x_test,y_test_binary)
+print "\nMax score obtained using Logistic classifier : ", sc
+
+# PLotting figure
+fig = plt.figure()
+ax = fig.add_subplot(111)
+
+x_axis = np.array([0.01,0.1,1,10])
+y_axis = list(c_scores)
+plt.plot(x_axis,y_axis)
+plt.xlabel('C')
+plt.ylabel('Scores')
+
+plt.title("Logistic Regression Classifier ")
+plt.savefig('LogiisticRegression.png')
+
+#Plotting ROC curve
+from ROCCurves import ROCCurves as ROC
+ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary)

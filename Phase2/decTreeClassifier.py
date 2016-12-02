@@ -1,5 +1,4 @@
 import numpy as np
-from sklearn.decomposition import PCA
 from sklearn.metrics import precision_recall_fscore_support as prfs
 from sklearn.tree import DecisionTreeClassifier as dtc
 from sklearn.model_selection import cross_val_score
@@ -8,8 +7,6 @@ from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
 from cross_validation import cross_validation as CV
 import matplotlib.pyplot as plt
-from sklearn.feature_selection import SelectKBest
-from sklearn.feature_selection import f_classif
 from feature_selection import feature_selection
 
 #Loading data
@@ -23,12 +20,10 @@ y_orig_train_binary = np.loadtxt('../Data/y_orig_train_binary.txt')
 #Modeling classifier
 clf = dtc(max_depth = 3)
 
-
-
 #Calling feature selection methods
 fs = feature_selection()
-#clf = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
-clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
+clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
+#clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
 
 #Printing scores
 aScore = accuracy_score(y_test_binary,y_out)
@@ -61,17 +56,17 @@ for i in range(2,20,2):
     print 'Score for ',i,':',sc
     max_depth_scores[i]=sc
 opt_max_depth = max(max_depth_scores,key = max_depth_scores.get)
-print "Best parameter : ",opt_max_depth# print "Best parameter : ",best_params_
+print "Best parameter : ",opt_max_depth
 
-# #Parameter tuning using grid search CV
-# print "\nChecking with inbuilt parameter tuning function"
-# parameters = {'max_depth' : list(range(2,20,2)) }
-# gscv = GridSearchCV(clf,parameters,cv=skf)
-# gscv.fit(x_train,y_train_binary)
-# print "Best score : ", gscv.score(x_test,y_test_binary)
-# print "Best estimator : ",gscv.best_estimator_
-# best_param = gscv.best_params_
-# print "Best parameter : ",best_param
+#Parameter tuning using grid search CV
+print "\nChecking with inbuilt parameter tuning function"
+parameters = {'max_depth' : list(range(2,20,2)) }
+gscv = GridSearchCV(clf,parameters,cv=skf)
+gscv.fit(x_train,y_train_binary)
+print "Best score : ", gscv.score(x_test,y_test_binary)
+print "Best estimator : ",gscv.best_estimator_
+best_param = gscv.best_params_
+print "Best parameter : ",best_param
 # opt_max_depth = best_param['max_depth']
 
 #Printing final result
@@ -93,3 +88,7 @@ plt.ylabel('Scores')
 
 plt.title("DecTreeClassifier ")
 plt.savefig('DecTreeClassifier.png')
+
+#Plotting ROC curve
+from ROCCurves import ROCCurves as ROC
+ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary)
