@@ -1,0 +1,33 @@
+--NBC
+
+--ALL
+Accuracy Score :  0.498745688304
+Score :  0.498745688304
+Precision recall f-score support :  (array([ 0.66273187,  0.48193604]), array([ 0.1159292,  0.9330656]), array([ 0.19733869,  0.63558646]), array([3390, 2988]))
+
+Manual  2  fold cross validation score
+/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_cv = x_train[sIndex:fIndex]
+/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_cv = y_train[sIndex:fIndex]
+/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
+/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
+0.472925545249
+0.544121333668
+
+Checking with inbuilt function
+[ 0.47292555  0.54412133]
+ROC curve Area = 0.607158032326
+AUC for CV:
+ROC fold 0(area = 0.570622809395)
+ROC fold 1(area = 0.648068535467)
+ROC fold 2(area = 0.634449273768)
+ROC fold 3(area = 0.615190112007)
+ROC fold 4(area = 0.646446556022)
+ROC fold 5(area = 0.645976002031)
+
+--PCA
+
+--KBest

@@ -22,8 +22,8 @@ clf = rfc()
 
 #Calling feature selection methods
 fs = feature_selection()
-#clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
-#clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
+# clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
+clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
 clf.fit (x_train,y_train_binary)
 y_out = clf.predict(x_test)
         

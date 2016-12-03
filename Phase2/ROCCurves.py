@@ -33,6 +33,7 @@ class ROCCurves:
         plt.savefig(savename)
         plt.legend(loc="lower right")
         plt.show()
+        print 'ROC curve Area = '+ str(roc_auc)
             
         
         # Run classifier with cross-validation and plot ROC curves
@@ -44,7 +45,8 @@ class ROCCurves:
         
         colors = cycle(['cyan', 'indigo', 'seagreen', 'yellow', 'blue', 'darkorange'])
         lw = 2
-        
+
+        print 'AUC for CV:' 
         i = 0
         for (train, test), color in zip(cv.split(x_train, y_train_binary), colors):
             probas_ = classifier.fit(x_train[train], y_train_binary[train]).predict_proba(x_train[test])
@@ -55,7 +57,7 @@ class ROCCurves:
             roc_auc = auc(fpr, tpr)
             plt.plot(fpr, tpr, lw=lw, color=color,
                      label='ROC fold %d (area = %0.2f)' % (i, roc_auc))
-        
+            print "ROC fold "+ str(i) +"(area = "+ str(roc_auc) + ")" 
             i += 1
         plt.plot([0, 1], [0, 1], linestyle='--', lw=lw, color='k',
                  label='Luck')
@@ -71,7 +73,7 @@ class ROCCurves:
         plt.xlabel('False Positive Rate')
         plt.ylabel('True Positive Rate')
         plt.title('Receiver operating characteristic example')
-        savename = classifierName + 'ROC.png'
+        savename = classifierName + 'ROCAll.png'
         plt.savefig(savename)
         plt.legend(loc="lower right")
         plt.show()

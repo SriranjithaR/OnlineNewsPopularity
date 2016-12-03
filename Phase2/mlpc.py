@@ -23,16 +23,18 @@ clf = MLPClassifier(alpha=0.0001)
 
 #Calling feature selection methods
 fs = feature_selection()
-clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
-#clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
+# clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
+clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
 
 
 #Printing scores
-# aScore = accuracy_score(y_test_binary,y_out)
-# print "Accuracy Score : ",aScore
+clf.fit (x_train,y_train_binary)
+y_out = clf.predict(x_test)
+aScore = accuracy_score(y_test_binary,y_out)
+print "Accuracy Score : ",aScore
 score = clf.score(x_test,y_test_binary)
 print "Score : ", score
-# print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
+print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
 
 
 #Cross validation
