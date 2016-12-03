@@ -9,20 +9,20 @@ import matplotlib.pyplot as plt
 from feature_selection import feature_selection
 
 #Loading data
-x_train = np.loadtxt('../Data/x_train.txt')
-y_train_binary = np.loadtxt('../Data/y_train_binary.txt')
-x_test = np.loadtxt('../Data/x_test.txt')
-y_test_binary = np.loadtxt('../Data/y_test_binary.txt')
-x_orig_train = np.loadtxt('../Data/x_orig_train.txt')
-y_orig_train_binary = np.loadtxt('../Data/y_orig_train_binary.txt')
+x_train = np.loadtxt('../Data_66/x_train.txt')
+y_train_binary = np.loadtxt('../Data_66/y_train_binary.txt')
+x_test = np.loadtxt('../Data_66/x_test.txt')
+y_test_binary = np.loadtxt('../Data_66/y_test_binary.txt')
+x_orig_train = np.loadtxt('../Data_66/x_orig_train.txt')
+y_orig_train_binary = np.loadtxt('../Data_66/y_orig_train_binary.txt')
 
 #Modeling classifier
 clf = dtc(max_depth = 3)
 
 #Calling feature selection methods
 fs = feature_selection()
-#clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
-clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
+clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
+#clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
 
 #Printing scores
 clf.fit (x_train,y_train_binary)
