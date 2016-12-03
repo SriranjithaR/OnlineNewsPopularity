@@ -56,21 +56,17 @@ for i in [0.1,1,2]:
     learn_rate_scores[i]=sc
 opt_learn_rate = max(learn_rate_scores,key = learn_rate_scores.get)
 print "Best parameter : ",opt_learn_rate
-clf = abc(learning_rate = opt_learn_rate)
-clf.fit (x_train,y_train_binary)
 
 print "Tuning number of estimators"
 n_est_scores = {}
 for i in range(20,70,5):
-    clf = abc(n_estimators = i)
+    clf = abc(n_estimators = i,learning_rate = opt_learn_rate)
     clf.fit (x_train,y_train_binary)
     sc = clf.score(x_test,y_test_binary)
     print 'Score for ',i,':',sc
     n_est_scores[i]=sc
 opt_n_est = max(n_est_scores,key = n_est_scores.get)
 print "Best parameter : ",opt_n_est
-clf = abc(n_estimators = opt_n_est)
-# print "Best parameter : ",best_params_
 
 
 #Printing final result
@@ -110,4 +106,4 @@ ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary,"adaBoost")
 
 #Dataset Vs Accuracy plot
 from DatasetVsAccuracy import DatasetVsAccuracyPlot as dvap
-dvap(clf,x_train,y_train_binary,x_test,y_test_binary)
+dvap(clf,x_train,y_train_binary,x_test,y_test_binary,"adaBoost")

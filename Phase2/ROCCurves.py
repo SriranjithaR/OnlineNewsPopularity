@@ -12,7 +12,7 @@ from scipy import interp
 import numpy as np
 
 class ROCCurves:
-    def getROCCurves(self,clf,x_train,y_train_binary,x_test,y_test_binary,classifier):
+    def getROCCurves(self,clf,x_train,y_train_binary,x_test,y_test_binary,classifierName):
         # Plot of a ROC curve for a specific class
         preds = clf.predict_proba(x_test)[:,1]
         fpr = []
@@ -21,7 +21,7 @@ class ROCCurves:
         fpr, tpr, _ = roc_curve(y_test_binary, preds)
         roc_auc = auc(fpr, tpr)
         
-        savename = classifier + 'ROC.png'
+        savename = classifierName + 'ROC.png'
         plt.figure()
         plt.plot(fpr, tpr, label='ROC curve (area = %0.2f)' % roc_auc)
         plt.plot([0, 1], [0, 1], 'k--')
@@ -71,7 +71,7 @@ class ROCCurves:
         plt.xlabel('False Positive Rate')
         plt.ylabel('True Positive Rate')
         plt.title('Receiver operating characteristic example')
-        savename = classifier + 'ROC_kfold.png'
+        savename = classifierName + 'ROC.png'
         plt.savefig(savename)
         plt.legend(loc="lower right")
         plt.show()

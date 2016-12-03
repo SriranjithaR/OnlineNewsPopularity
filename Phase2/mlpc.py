@@ -59,8 +59,6 @@ for i in  [0.0001,0.001,0.01,0.1,1,10]:
     alpha_scores[i]=sc
 opt_alpha = max(alpha_scores,key = alpha_scores.get)
 print "Best parameter : ",opt_alpha
-clf = MLPClassifier(alpha=opt_alpha)
-clf.fit (x_train,y_train_binary)
 
 #Printing final result
 clf =  MLPClassifier(alpha=opt_alpha)
