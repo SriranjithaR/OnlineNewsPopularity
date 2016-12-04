@@ -1,18 +1,17 @@
 --mlpc
 
 --ALL
-Accuracy Score :  0.578551269991
 Score :  0.578551269991
 Precision recall f-score support :  (array([ 0.58429395,  0.56775068]), array([ 0.71769912,  0.42068273]), array([ 0.64416203,  0.48327566]), array([3390, 2988]))
 
 Manual  2  fold cross validation score
-/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
   x_cv = x_train[sIndex:fIndex]
-/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
   y_cv = y_train[sIndex:fIndex]
-/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
   x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
-/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
   y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
 0.503070945099
 0.486525444974
@@ -42,6 +41,7 @@ ROC fold 5(area = 0.639298156241)
 
 
 --PCA
+Applying PCA
 Score  for  1  features :  0.510348071496
 Score  for  2  features :  0.490906240201
 Score  for  3  features :  0.505017246786
@@ -103,18 +103,16 @@ Score  for  58  features :  0.576042646598
 Score  for  59  features :  0.512386328003
 Max score was obtained for :  42  features
 Score :  0.520852931954
-Accuracy Score :  0.488867983694
-Score :  0.488867983694
 Precision recall f-score support :  (array([ 0.51485375,  0.43206793]), array([ 0.66460177,  0.2894913 ]), array([ 0.58022148,  0.34669339]), array([3390, 2988]))
 
 Manual  2  fold cross validation score
-/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
   x_cv = x_train[sIndex:fIndex]
-/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
   y_cv = y_train[sIndex:fIndex]
-/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
   x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
-/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
   y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
 0.59275507646
 0.527074454751
@@ -207,18 +205,16 @@ Score  for  58  features :  0.518030730637
 Score  for  59  features :  0.531514581373
 Max score was obtained for :  14  features
 Score :  0.611320163061
-Accuracy Score :  0.468798996551
-Score :  0.468798996551
 Precision recall f-score support :  (array([ 1.        ,  0.46863237]), array([  5.89970501e-04,   1.00000000e+00]), array([ 0.00117925,  0.63818881]), array([3390, 2988]))
 
 Manual  2  fold cross validation score
-/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
   x_cv = x_train[sIndex:fIndex]
-/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
   y_cv = y_train[sIndex:fIndex]
-/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
   x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
-/home/shikhar/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
   y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
 0.539671596891
 0.507771371271

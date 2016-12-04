@@ -1,0 +1,227 @@
+--All
+
+Score :  0.571495766698
+Precision recall f-score support :  (array([ 0.59653247,  0.54285714]), array([ 0.59882006,  0.54049531]), array([ 0.59767408,  0.54167365]), array([3390, 2988], dtype=int64))
+
+Manual  2  fold cross validation score
+cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_cv = x_train[sIndex:fIndex]
+cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_cv = y_train[sIndex:fIndex]
+cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
+cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
+0.545938831787
+0.554148909501
+
+Checking with inbuilt function
+[ 0.54593883  0.55414891]
+
+Manual parameter tuning
+Tuning number of neighbours
+Score for  1 : 0.539197240514
+Score for  2 : 0.562402006899
+Score for  3 : 0.564910630292
+Score for  4 : 0.568516776419
+Score for  5 : 0.571495766698
+Score for  6 : 0.576356224522
+Score for  7 : 0.574004390091
+Score for  8 : 0.578864847915
+Score for  9 : 0.570555032926
+Best parameter :  8
+
+Max score obtained using KNN Classifier :  0.578864847915
+
+--PCA
+
+Applying PCA
+Score  for  1  features :  0.532298526184
+Score  for  2  features :  0.529162746943
+Score  for  3  features :  0.545312010034
+Score  for  4  features :  0.550956412669
+Score  for  5  features :  0.557855126999
+Score  for  6  features :  0.571495766698
+Score  for  7  features :  0.572279711508
+Score  for  8  features :  0.570241455002
+Score  for  9  features :  0.569143932267
+Score  for  10  features :  0.568203198495
+Score  for  11  features :  0.571809344622
+Score  for  12  features :  0.571025399812
+Score  for  13  features :  0.571495766698
+Score  for  14  features :  0.571495766698
+Score  for  15  features :  0.571495766698
+Score  for  16  features :  0.571495766698
+Score  for  17  features :  0.571495766698
+Score  for  18  features :  0.571495766698
+Score  for  19  features :  0.571495766698
+Score  for  20  features :  0.571495766698
+Score  for  21  features :  0.571495766698
+Score  for  22  features :  0.571495766698
+Score  for  23  features :  0.571495766698
+Score  for  24  features :  0.571495766698
+Score  for  25  features :  0.571495766698
+Score  for  26  features :  0.571495766698
+Score  for  27  features :  0.571495766698
+Score  for  28  features :  0.571495766698
+Score  for  29  features :  0.571495766698
+Score  for  30  features :  0.571495766698
+Score  for  31  features :  0.571495766698
+Score  for  32  features :  0.571495766698
+Score  for  33  features :  0.571495766698
+Score  for  34  features :  0.571495766698
+Score  for  35  features :  0.571495766698
+Score  for  36  features :  0.571495766698
+Score  for  37  features :  0.571495766698
+Score  for  38  features :  0.571495766698
+Score  for  39  features :  0.571495766698
+Score  for  40  features :  0.571495766698
+Score  for  41  features :  0.571495766698
+Score  for  42  features :  0.571495766698
+Score  for  43  features :  0.571495766698
+Score  for  44  features :  0.571495766698
+Score  for  45  features :  0.571495766698
+Score  for  46  features :  0.571495766698
+Score  for  47  features :  0.571495766698
+Score  for  48  features :  0.571495766698
+Score  for  49  features :  0.571495766698
+Score  for  50  features :  0.571495766698
+Score  for  51  features :  0.571495766698
+Score  for  52  features :  0.571495766698
+Score  for  53  features :  0.571495766698
+Score  for  54  features :  0.571495766698
+Score  for  55  features :  0.571495766698
+Score  for  56  features :  0.571495766698
+Score  for  57  features :  0.571495766698
+Score  for  58  features :  0.571495766698
+Score  for  59  features :  0.571495766698
+Max score was obtained for :  7  features
+Score :  0.572279711508
+Precision recall f-score support :  (array([ 0.59638905,  0.54415761]), array([ 0.60412979,  0.53614458]), array([ 0.60023447,  0.54012138]), array([3390, 2988], dtype=int64))
+
+Manual  2  fold cross validation score
+cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_cv = x_train[sIndex:fIndex]
+cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_cv = y_train[sIndex:fIndex]
+cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
+cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
+0.545938831787
+0.554148909501
+
+Checking with inbuilt function
+[ 0.54593883  0.55414891]
+
+Manual parameter tuning
+Tuning number of neighbours
+Score for  1 : 0.535591094387
+Score for  2 : 0.556600815303
+Score for  3 : 0.56020696143
+Score for  4 : 0.573534023205
+Score for  5 : 0.572279711508
+Score for  6 : 0.579335214801
+Score for  7 : 0.573220445281
+Score for  8 : 0.579805581687
+Score for  9 : 0.570711821888
+Best parameter :  8
+
+Max score obtained using KNN Classifier :  0.579805581687
+
+
+--KBest
+
+Applying SelectKBest
+Score  for  1  features :  0.546566321731
+Score  for  2  features :  0.545782376921
+Score  for  3  features :  0.548291000314
+Score  for  4  features :  0.550799623706
+Score  for  5  features :  0.550956412669
+Score  for  6  features :  0.55032925682
+Score  for  7  features :  0.562088428975
+Score  for  8  features :  0.57086861085
+Score  for  9  features :  0.545782376921
+Score  for  10  features :  0.547036688617
+Score  for  11  features :  0.541235497021
+Score  for  12  features :  0.540451552211
+Score  for  13  features :  0.540451552211
+Score  for  14  features :  0.539981185325
+Score  for  15  features :  0.540294763249
+Score  for  16  features :  0.540137974287
+Score  for  17  features :  0.568830354343
+Score  for  18  features :  0.568673565381
+Score  for  19  features :  0.568673565381
+Score  for  20  features :  0.568673565381
+Score  for  21  features :  0.571182188774
+Score  for  22  features :  0.571182188774
+Score  for  23  features :  0.566792097836
+Score  for  24  features :  0.566792097836
+Score  for  25  features :  0.566792097836
+Score  for  26  features :  0.566635308874
+Score  for  27  features :  0.571966133584
+Score  for  28  features :  0.571809344622
+Score  for  29  features :  0.571809344622
+Score  for  30  features :  0.581373471308
+Score  for  31  features :  0.581373471308
+Score  for  32  features :  0.581216682346
+Score  for  33  features :  0.581216682346
+Score  for  34  features :  0.581216682346
+Score  for  35  features :  0.581216682346
+Score  for  36  features :  0.585293195359
+Score  for  37  features :  0.582627783004
+Score  for  38  features :  0.582627783004
+Score  for  39  features :  0.582627783004
+Score  for  40  features :  0.5884289746
+Score  for  41  features :  0.5884289746
+Score  for  42  features :  0.5884289746
+Score  for  43  features :  0.5884289746
+Score  for  44  features :  0.587958607714
+Score  for  45  features :  0.587958607714
+Score  for  46  features :  0.587958607714
+Score  for  47  features :  0.587958607714
+Score  for  48  features :  0.587958607714
+Score  for  49  features :  0.570398243964
+Score  for  50  features :  0.570398243964
+Score  for  51  features :  0.570398243964
+Score  for  52  features :  0.570398243964
+Score  for  53  features :  0.570398243964
+Score  for  54  features :  0.570398243964
+Score  for  55  features :  0.570398243964
+Score  for  56  features :  0.570398243964
+Score  for  57  features :  0.570398243964
+Score  for  58  features :  0.571495766698
+Score  for  59  features :  0.571495766698
+Max score was obtained for :  40  features
+Score :  0.5884289746
+Precision recall f-score support :  (array([ 0.60832625,  0.56375132]), array([ 0.63362832,  0.53714859]), array([ 0.62071955,  0.55012853]), array([3390, 2988], dtype=int64))
+
+Manual  2  fold cross validation score
+cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_cv = x_train[sIndex:fIndex]
+cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_cv = y_train[sIndex:fIndex]
+cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
+cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
+0.545938831787
+0.554148909501
+
+Checking with inbuilt function
+[ 0.54593883  0.55414891]
+
+Manual parameter tuning
+Tuning number of neighbours
+Score for  1 : 0.563969896519
+Score for  2 : 0.572593289432
+Score for  3 : 0.575101912825
+Score for  4 : 0.586233929131
+Score for  5 : 0.5884289746
+Score for  6 : 0.596425211665
+Score for  7 : 0.595641266855
+Score for  8 : 0.601442458451
+Score for  9 : 0.600501724679
+Best parameter :  8
+
+Max score obtained using KNN Classifier :  0.601442458451

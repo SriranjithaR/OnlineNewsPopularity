@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Dec 01 23:30:30 2016
-
-@author: Pinky
-"""
-
 import numpy as np
 from sklearn.metrics import precision_recall_fscore_support as prfs
 from sklearn.model_selection import cross_val_score
@@ -28,22 +21,21 @@ clf = knn()
 
 #Calling feature selection methods
 fs = feature_selection()
-clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
-#clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
+#clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
+clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
+clf.fit (x_train,y_train_binary)
+y_out = clf.predict(x_test)
 
 #Printing scores
-aScore = accuracy_score(y_test_binary,y_out)
-print "Accuracy Score : ",aScore
 score = clf.score(x_test,y_test_binary)
 print "Score : ", score
 print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
 
 
 #Cross validation
-cval = CV()
 folds = 2
 print "\nManual ",folds," fold cross validation score"
-cval.crossValidation(x_orig_train,y_orig_train_binary,clf,folds);
+CV(x_orig_train,y_orig_train_binary,clf,folds);
 scores = cross_val_score(clf, x_orig_train, y_orig_train_binary, cv=10)
 
 #Checking with inbuilt CV function
@@ -64,8 +56,6 @@ for i in range(1,10):
     n_nei_scores[i]=sc
 opt_n_nei = max(n_nei_scores,key = n_nei_scores.get)
 print "Best parameter : ",opt_n_nei
-clf = knn(n_neighbors = opt_n_nei)
-# print "Best parameter : ",best_params_
 
 
 #Printing final result
@@ -86,8 +76,8 @@ plt.xlabel('No of neighbours')
 plt.ylabel('Mean scores')
 
 plt.title("KNN Classifier ")
-plt.savefig('KNNClassifier.png')
+plt.savefig('Figures/knn/KNNClassifier.png')
 
 #Plotting ROC curve
 from ROCCurves import ROCCurves as ROC
-ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary)
+ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary,"knn")

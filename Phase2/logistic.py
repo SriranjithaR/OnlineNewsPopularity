@@ -31,14 +31,10 @@ clf = LR(C = 1.0,solver ='sag')
 fs = feature_selection()
 # clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
 clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
-
-
 clf.fit (x_train,y_train_binary)
 y_out = clf.predict(x_test)
 
 #Printing scores
-aScore = accuracy_score(y_test_binary,y_out)
-print "Accuracy Score : ",aScore
 score = clf.score(x_test,y_test_binary)
 print "Score : ", score
 print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
@@ -82,12 +78,12 @@ ax = fig.add_subplot(111)
 
 x_axis = np.array([0.01,0.1,1,10])
 y_axis = list(c_scores)
-plt.plot(x_axis,y_axis)
+plt.scatter(x_axis,y_axis)
 plt.xlabel('C')
 plt.ylabel('Scores')
 
 plt.title("Logistic Regression Classifier ")
-plt.savefig('LogiisticRegression.png')
+plt.savefig('Figures/logistic/LogiisticRegression.png')
 
 #Plotting ROC curve
 from ROCCurves import ROCCurves as ROC

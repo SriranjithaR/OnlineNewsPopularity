@@ -25,13 +25,10 @@ clf = MLPClassifier(alpha=0.0001)
 fs = feature_selection()
 # clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
 clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
-
-
-#Printing scores
 clf.fit (x_train,y_train_binary)
 y_out = clf.predict(x_test)
-aScore = accuracy_score(y_test_binary,y_out)
-print "Accuracy Score : ",aScore
+
+#Printing scores
 score = clf.score(x_test,y_test_binary)
 print "Score : ", score
 print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
@@ -66,7 +63,7 @@ print "Best parameter : ",opt_alpha
 clf =  MLPClassifier(alpha=opt_alpha)
 clf.fit (x_train,y_train_binary)
 sc = clf.score(x_test,y_test_binary)
-print "\nMax score obtained using MLPClassifier : ", sc
+print "\nMax score obtained using MLPClassifier : ", max(alpha_scores.values())
 
 # PLotting figure
 fig = plt.figure()
@@ -79,7 +76,7 @@ plt.xlabel('Alpha')
 plt.ylabel('Scores')
 
 plt.title("mlpc ")
-plt.savefig('mlpc.png')
+plt.savefig('Figures/mlpc/mlpc.png')
 
 
 from ROCCurves import ROCCurves as ROC
