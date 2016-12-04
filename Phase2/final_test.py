@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Dec 01 23:39:23 2016
-
-@author: Shikhar
-"""
 from sklearn.cross_validation import train_test_split
 from pandas import DataFrame, read_csv
 import numpy as np
