@@ -71,6 +71,7 @@ ax = fig.add_subplot(111)
 
 x_axis = np.array(range(1,10))
 y_axis = list(n_nei_scores.values())
+#plt.scatter(x_axis,y_axis)
 plt.plot(x_axis,y_axis)
 plt.xlabel('No of neighbours')
 plt.ylabel('Mean scores')

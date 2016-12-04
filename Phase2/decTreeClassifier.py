@@ -70,7 +70,8 @@ ax = fig.add_subplot(111)
 
 x_axis = np.array(range(2,20,2))
 y_axis = list(max_depth_scores.values())
-plt.scatter(x_axis,y_axis)
+#plt.scatter(x_axis,y_axis)
+plt.plot(x_axis,y_axis)
 plt.xlabel('Max_depth')
 plt.ylabel('Scores')
 

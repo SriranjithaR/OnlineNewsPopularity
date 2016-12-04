@@ -78,7 +78,8 @@ ax = fig.add_subplot(111)
 
 x_axis = np.array([0.01,0.1,1,10])
 y_axis = list(c_scores)
-plt.scatter(x_axis,y_axis)
+#plt.scatter(x_axis,y_axis)
+plt.plot(x_axis,y_axis)
 plt.xlabel('C')
 plt.ylabel('Scores')
 

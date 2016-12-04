@@ -99,6 +99,7 @@ for i in list(range(10,120,10)):
 x_axis = list(n_est_scores.keys())
 y_axis = list(n_est_scores.values())
 plt.scatter(x_axis,y_axis)
+#plt.plot(x_axis,y_axis)
 plt.xlabel('No. of estimators')
 plt.ylabel('scores')
 plt.savefig('Figures/rfc/RandomForestClassifier2.png')
