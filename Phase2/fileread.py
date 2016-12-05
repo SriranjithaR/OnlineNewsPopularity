@@ -45,6 +45,20 @@ y_train_binary = y_train < median
 y_test_binary = y_test < median
 y_orig_train_binary = y_orig_train < median
 
+#Reading the final testset file
+fileLocation = '../OnlineNewsPopularity/test_data.csv'
+df = pd.read_csv(fileLocation)
+print df.shape
+
+# Deleting first column
+del df['url']
+
+x_final_test = df.as_matrix()
+y_final_test = x_final_test[:,60]
+x_final_test = np.delete(x_final_test,60,1)
+x_final_test = np.delete(x_final_test,0,1)
+y_final_test_binary = y_final_test < median
+
 np.savetxt('../Data/x_train.txt',x_train, fmt = '%g')
 np.savetxt('../Data/y_train.txt',y_train, fmt = '%g')
 np.savetxt('../Data/x_test.txt',x_test, fmt = '%g')
@@ -53,7 +67,8 @@ np.savetxt('../Data/x_orig_train.txt',x_orig_train, fmt = '%g')
 np.savetxt('../Data/y_orig_train.txt',y_orig_train, fmt = '%g')
 np.savetxt('../Data/y_train_binary.txt',y_train_binary, fmt = '%g')
 np.savetxt('../Data/y_test_binary.txt',y_test_binary, fmt = '%g')
-np.savetxt('../Data/y_orig_train_binary.txt',y_orig_train_binary, fmt = '%g')
+np.savetxt('../Data/x_final_test.txt',x_final_test, fmt = '%g')
+np.savetxt('../Data/y_final_test_binary.txt',y_final_test_binary, fmt = '%g')
 
 
 from sklearn import preprocessing
