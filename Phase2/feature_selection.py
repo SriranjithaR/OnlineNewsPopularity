@@ -1,4 +1,3 @@
-import numpy as np
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import f_classif
 from sklearn.decomposition import PCA
@@ -6,7 +5,7 @@ from sklearn.decomposition import PCA
 class feature_selection:
     #Applying SelectKBest
     def KBest(self,x_train,y_train_binary,x_test,y_test_binary
-    ,clf):
+    ,x_final_test,clf):
         print "\nApplying SelectKBest"
         skbest_scores = {}
         for nf in list(range(1,60)):
@@ -25,12 +24,13 @@ class feature_selection:
         skbest = SelectKBest(f_classif, k = max_score_nf )
         x_train = skbest.fit_transform(x_train,y_train_binary)
         x_test = skbest.transform(x_test)
+        x_final_test = skbest.transform(x_final_test)
         clf.fit (x_train,y_train_binary)
         y_out = clf.predict(x_test)
-        return (clf,x_train,x_test,y_out)
+        return (clf,x_train,x_test,x_final_test,y_out)
 
     def PCASelection(self,x_train,y_train_binary,x_test,y_test_binary
-    ,clf):
+    ,x_final_test,clf):
         #Applying PCA
         print "\nApplying PCA"
         pca_scores = {}
@@ -49,7 +49,8 @@ class feature_selection:
         pca = PCA(n_components=  max_score_nf)
         x_train = pca.fit_transform(x_train)
         x_test = pca.transform(x_test)
+        x_final_test = pca.transform(x_final_test)
 
         clf.fit (x_train,y_train_binary)
         y_out = clf.predict(x_test)
-        return (clf,x_train,x_test,y_out)
+        return (clf,x_train,x_test,x_final_test,y_out)

@@ -1,0 +1,243 @@
+--Logistic
+
+--All Features	
+Score :  0.593446221386
+Precision recall f-score support :  (array([ 0.59600096,  0.58868433]), array([ 0.72979351,  0.43875502]), array([ 0.6561464 ,  0.50278044]), array([3390, 2988]))
+
+Manual  2  fold cross validation score
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_cv = x_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_cv = y_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
+0.581286036601
+0.586425169215
+
+Checking with inbuilt function
+[ 0.58128604  0.58686388]
+
+Manual parameter tuning
+Tuning C values
+Score for  0.01 : 0.609125117592
+Score for  0.1 : 0.609438695516
+Score for  1 : 0.608341172781
+Score for  10 : 0.608654750706
+Best parameter :  0.1
+
+Max score obtained using Logistic classifier :  0.609438695516
+ROC curve Area = 0.633627035181
+AUC for CV:
+ROC fold 0(area = 0.527099020322)
+ROC fold 1(area = 0.665082330819)
+ROC fold 2(area = 0.669859758348)
+ROC fold 3(area = 0.637262733411)
+ROC fold 4(area = 0.63441087616)
+ROC fold 5(area = 0.65685353668)
+
+
+
+
+--PCA
+Applying PCA
+Score  for  1  features :  0.510348071496
+Score  for  2  features :  0.526810912512
+Score  for  3  features :  0.530103480715
+Score  for  4  features :  0.542019441831
+Score  for  5  features :  0.543900909376
+Score  for  6  features :  0.552053935403
+Score  for  7  features :  0.552524302289
+/home/.local/lib/python2.7/site-packages/sklearn/linear_model/sag.py:286: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  "the coef_ did not converge", ConvergenceWarning)
+Score  for  8  features :  0.552210724365
+Score  for  9  features :  0.574788334901
+Score  for  10  features :  0.581059893384
+Score  for  11  features :  0.585449984321
+Score  for  12  features :  0.585449984321
+Score  for  13  features :  0.585136406397
+Score  for  14  features :  0.585293195359
+Score  for  15  features :  0.584979617435
+Score  for  16  features :  0.585293195359
+Score  for  17  features :  0.585293195359
+Score  for  18  features :  0.585136406397
+Score  for  19  features :  0.585293195359
+Score  for  20  features :  0.585136406397
+Score  for  21  features :  0.585136406397
+Score  for  22  features :  0.585136406397
+Score  for  23  features :  0.585136406397
+Score  for  24  features :  0.585293195359
+Score  for  25  features :  0.585293195359
+Score  for  26  features :  0.585136406397
+Score  for  27  features :  0.584979617435
+Score  for  28  features :  0.585136406397
+Score  for  29  features :  0.585293195359
+Score  for  30  features :  0.585293195359
+Score  for  31  features :  0.585293195359
+Score  for  32  features :  0.585293195359
+Score  for  33  features :  0.585293195359
+Score  for  34  features :  0.585293195359
+Score  for  35  features :  0.585293195359
+Score  for  36  features :  0.585293195359
+Score  for  37  features :  0.585293195359
+Score  for  38  features :  0.584979617435
+Score  for  39  features :  0.585293195359
+Score  for  40  features :  0.584979617435
+Score  for  41  features :  0.585293195359
+Score  for  42  features :  0.584979617435
+Score  for  43  features :  0.585293195359
+Score  for  44  features :  0.584979617435
+Score  for  45  features :  0.585136406397
+Score  for  46  features :  0.585293195359
+Score  for  47  features :  0.585136406397
+Score  for  48  features :  0.585136406397
+Score  for  49  features :  0.585136406397
+Score  for  50  features :  0.585293195359
+Score  for  51  features :  0.585136406397
+Score  for  52  features :  0.585293195359
+Score  for  53  features :  0.585136406397
+Score  for  54  features :  0.585136406397
+Score  for  55  features :  0.585136406397
+Score  for  56  features :  0.585136406397
+Score  for  57  features :  0.585136406397
+Score  for  58  features :  0.585136406397
+Score  for  59  features :  0.585136406397
+Max score was obtained for :  11  features
+Score :  0.585293195359
+Precision recall f-score support :  (array([ 0.63987983,  0.5461642 ]), array([ 0.50265487,  0.67904953]), array([ 0.5630266 ,  0.60540057]), array([3390, 2988]))
+
+Manual  2  fold cross validation score
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_cv = x_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_cv = y_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
+0.580910002507
+0.586926548007
+
+Checking with inbuilt function
+[ 0.58103535  0.58667586]
+
+Manual parameter tuning
+Tuning C values
+Score for  0.01 : 0.596425211665
+Score for  0.1 : 0.60442144873
+Score for  1 : 0.596425211665
+Score for  10 : 0.597052367513
+Best parameter :  0.1
+
+Max score obtained using Logistic classifier :  0.60442144873
+ROC curve Area = 0.639000939846
+AUC for CV:
+ROC fold 0(area = 0.616568745827)
+ROC fold 1(area = 0.672584351207)
+ROC fold 2(area = 0.668021770999)
+ROC fold 3(area = 0.635906586141)
+ROC fold 4(area = 0.637280968937)
+ROC fold 5(area = 0.656175846549)
+
+--KBest
+
+
+Applying SelectKBest
+Score  for  1  features :  0.532141737222
+/home/.local/lib/python2.7/site-packages/sklearn/linear_model/sag.py:286: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  "the coef_ did not converge", ConvergenceWarning)
+Score  for  2  features :  0.532141737222
+Score  for  3  features :  0.532141737222
+Score  for  4  features :  0.532141737222
+Score  for  5  features :  0.532141737222
+Score  for  6  features :  0.532141737222
+Score  for  7  features :  0.532141737222
+Score  for  8  features :  0.532141737222
+Score  for  9  features :  0.532141737222
+Score  for  10  features :  0.531828159298
+Score  for  11  features :  0.531514581373
+Score  for  12  features :  0.531514581373
+Score  for  13  features :  0.531671370336
+Score  for  14  features :  0.531671370336
+Score  for  15  features :  0.532141737222
+Score  for  16  features :  0.532141737222
+Score  for  17  features :  0.532141737222
+Score  for  18  features :  0.53198494826
+Score  for  19  features :  0.53198494826
+Score  for  20  features :  0.53198494826
+Score  for  21  features :  0.531828159298
+Score  for  22  features :  0.531828159298
+Score  for  23  features :  0.531828159298
+Score  for  24  features :  0.531828159298
+Score  for  25  features :  0.531828159298
+Score  for  26  features :  0.531828159298
+Score  for  27  features :  0.531828159298
+Score  for  28  features :  0.531828159298
+Score  for  29  features :  0.531828159298
+Score  for  30  features :  0.531514581373
+Score  for  31  features :  0.531514581373
+Score  for  32  features :  0.531514581373
+Score  for  33  features :  0.531514581373
+Score  for  34  features :  0.531514581373
+Score  for  35  features :  0.531514581373
+Score  for  36  features :  0.53198494826
+Score  for  37  features :  0.531828159298
+Score  for  38  features :  0.531828159298
+Score  for  39  features :  0.531828159298
+Score  for  40  features :  0.593603010348
+Score  for  41  features :  0.593603010348
+Score  for  42  features :  0.59375979931
+Score  for  43  features :  0.593289432424
+Score  for  44  features :  0.593446221386
+Score  for  45  features :  0.594386955158
+Score  for  46  features :  0.593603010348
+Score  for  47  features :  0.594073377234
+Score  for  48  features :  0.593916588272
+Score  for  49  features :  0.592662276576
+Score  for  50  features :  0.592505487614
+Score  for  51  features :  0.592505487614
+Score  for  52  features :  0.5929758545
+Score  for  53  features :  0.59219190969
+Score  for  54  features :  0.592035120728
+Score  for  55  features :  0.592662276576
+Score  for  56  features :  0.592505487614
+Score  for  57  features :  0.592662276576
+Score  for  58  features :  0.593132643462
+Score  for  59  features :  0.5929758545
+Max score was obtained for :  45  features
+Score :  0.59375979931
+Precision recall f-score support :  (array([ 0.59807787,  0.58491379]), array([ 0.7159292 ,  0.45414993]), array([ 0.65171858,  0.51130369]), array([3390, 2988]))
+
+Manual  2  fold cross validation score
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_cv = x_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_cv = y_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
+0.580972674856
+0.586989220356
+
+Checking with inbuilt function
+[ 0.58141138  0.5868012 ]
+
+Manual parameter tuning
+Tuning C values
+Score for  0.01 : 0.608184383819
+Score for  0.1 : 0.606930072123
+Score for  1 : 0.608184383819
+Score for  10 : 0.607243650047
+Best parameter :  1
+
+Max score obtained using Logistic classifier :  0.608184383819
+ROC curve Area = 0.632332377692
+AUC for CV:
+ROC fold 0(area = 0.520466452872)
+ROC fold 1(area = 0.65371853334)
+ROC fold 2(area = 0.659897134825)
+ROC fold 3(area = 0.640119773845)
+ROC fold 4(area = 0.657310656342)
+ROC fold 5(area = 0.664635586227)

@@ -15,14 +15,16 @@ x_test = np.loadtxt('../Data/x_test.txt')
 y_test_binary = np.loadtxt('../Data/y_test_binary.txt')
 x_orig_train = np.loadtxt('../Data/x_orig_train.txt')
 y_orig_train_binary = np.loadtxt('../Data/y_orig_train_binary.txt')
+x_final_test = np.loadtxt('../Data/x_final_test.txt')
+y_final_test_binary = np.loadtxt('../Data/y_final_test_binary.txt')
 
 #Modeling classifier
 clf = knn()
 
 #Calling feature selection methods
 fs = feature_selection()
-#clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
-clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
+#clf,x_train,x_test,x_final_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,x_final_test,clf)
+clf,x_train,x_test,x_final_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,x_final_test,clf)
 clf.fit (x_train,y_train_binary)
 y_out = clf.predict(x_test)
 
@@ -82,3 +84,6 @@ plt.savefig('Figures/knn/KNNClassifier.png')
 #Plotting ROC curve
 from ROCCurves import ROCCurves as ROC
 ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary,"knn")
+
+from final_test import finalTest as ft
+ft(clf)

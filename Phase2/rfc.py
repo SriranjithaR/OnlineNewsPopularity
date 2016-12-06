@@ -15,15 +15,16 @@ x_test = np.loadtxt('../Data/x_test.txt')
 y_test_binary = np.loadtxt('../Data/y_test_binary.txt')
 x_orig_train = np.loadtxt('../Data/x_orig_train.txt')
 y_orig_train_binary = np.loadtxt('../Data/y_orig_train_binary.txt')
-
+x_final_test = np.loadtxt('../Data/x_final_test.txt')
+y_final_test_binary = np.loadtxt('../Data/y_final_test_binary.txt')
 
 #Model fitting
 clf = rfc()
 
 #Calling feature selection methods
-#fs = feature_selection()
-#clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
-#clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
+fs = feature_selection()
+#clf,x_train,x_test,x_final_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,x_final_test,clf)
+clf,x_train,x_test,x_final_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,x_final_test,clf)
 clf.fit (x_train,y_train_binary)
 y_out = clf.predict(x_test)
         
@@ -74,7 +75,7 @@ clf.fit (x_train,y_train_binary)
 #clf = rfc(n_estimators = opt_n_est,max_depth = opt_max_depth)
 #clf.fit (x_train,y_train_binary)
 sc = max(max_depth_scores.values())
-print "\nMax score obtained using decision tree : ", sc
+print "\nMax score obtained using RFC : ", sc
 
 # Plotting figure
 
@@ -111,3 +112,6 @@ ROC().getROCCurves(clf,x_train,y_train_binary,x_test,y_test_binary,"rfc")
 #Dataset Vs Accuracy plot
 from DatasetVsAccuracy import DatasetVsAccuracyPlot as dvap
 dvap(clf,x_train,y_train_binary,x_test,y_test_binary,"rfc")
+
+from final_test import finalTest as ft
+ft(clf,x_final_test,y_final_test_binary)

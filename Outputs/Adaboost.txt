@@ -1,0 +1,262 @@
+--Adaboost
+
+--All Features
+
+Score :  0.664471621198
+Precision recall f-score support :  (array([ 0.67438616,  0.65175376]), array([ 0.71297935,  0.60943775]), array([ 0.69314597,  0.62988585]), array([3390, 2988]))
+
+Manual  2  fold cross validation score
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_cv = x_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_cv = y_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
+0.63311606919
+0.661067936826
+
+Checking with inbuilt function
+[ 0.63311607  0.66106794]
+
+Manual parameter tuning
+Tuning learning rate :
+Score for  0.1 : 0.645500156789
+Score for  1 : 0.664471621198
+Score for  2 : 0.415647538413
+Best parameter :  1
+Tuning number of estimators
+Score for  20 : 0.653496393854
+Score for  25 : 0.657572906867
+Score for  30 : 0.661649419881
+Score for  35 : 0.660238319222
+Score for  40 : 0.661962997805
+Score for  45 : 0.66462841016
+Score for  50 : 0.664471621198
+Score for  55 : 0.662746942615
+Score for  60 : 0.663687676388
+Score for  65 : 0.664158043274
+Best parameter :  45
+
+Max score obtained using AdaBoost Classifier :  0.66462841016
+ROC curve Area = 0.583653591751
+AUC for CV:
+ROC fold 0(area = 0.569129883281)
+ROC fold 1(area = 0.599945635607)
+ROC fold 2(area = 0.603101661887)
+ROC fold 3(area = 0.576392237923)
+ROC fold 4(area = 0.60862482055)
+ROC fold 5(area = 0.619965856799)
+
+
+--PCA
+Applying PCA
+Score  for  1  features :  0.550015678896
+Score  for  2  features :  0.55409219191
+Score  for  3  features :  0.558482282847
+Score  for  4  features :  0.57698338037
+Score  for  5  features :  0.575415490749
+Score  for  6  features :  0.595327688931
+Score  for  7  features :  0.596111633741
+Score  for  8  features :  0.59830667921
+Score  for  9  features :  0.600031357792
+Score  for  10  features :  0.606459705237
+Score  for  11  features :  0.611633740985
+Score  for  12  features :  0.612574474757
+Score  for  13  features :  0.616807776733
+Score  for  14  features :  0.618846033239
+Score  for  15  features :  0.617748510505
+Score  for  16  features :  0.619002822201
+Score  for  17  features :  0.62731263719
+Score  for  18  features :  0.627155848228
+Score  for  19  features :  0.621511445594
+Score  for  20  features :  0.618689244277
+Score  for  21  features :  0.618689244277
+Score  for  22  features :  0.62198181248
+Score  for  23  features :  0.624960802759
+Score  for  24  features :  0.627783004077
+Score  for  25  features :  0.6417372217
+Score  for  26  features :  0.64252116651
+Score  for  27  features :  0.642834744434
+Score  for  28  features :  0.642050799624
+Score  for  29  features :  0.640169332079
+Score  for  30  features :  0.642207588586
+Score  for  31  features :  0.644873000941
+Score  for  32  features :  0.647538413296
+Score  for  33  features :  0.648479147068
+Score  for  34  features :  0.639228598307
+Score  for  35  features :  0.640169332079
+Score  for  36  features :  0.640326121041
+Score  for  37  features :  0.644402634055
+Score  for  38  features :  0.644559423017
+Score  for  39  features :  0.646754468485
+Score  for  40  features :  0.646754468485
+Score  for  41  features :  0.646754468485
+Score  for  42  features :  0.642991533396
+Score  for  43  features :  0.653809971778
+Score  for  44  features :  0.653809971778
+Score  for  45  features :  0.653809971778
+Score  for  46  features :  0.653809971778
+Score  for  47  features :  0.653809971778
+Score  for  48  features :  0.646284101599
+Score  for  49  features :  0.646284101599
+Score  for  50  features :  0.646284101599
+Score  for  51  features :  0.646284101599
+Score  for  52  features :  0.646284101599
+Score  for  53  features :  0.646284101599
+Score  for  54  features :  0.646284101599
+Score  for  55  features :  0.646284101599
+Score  for  56  features :  0.646284101599
+Score  for  57  features :  0.646284101599
+Score  for  58  features :  0.646284101599
+Score  for  59  features :  0.646284101599
+Max score was obtained for :  43  features
+Score :  0.653809971778
+Precision recall f-score support :  (array([ 0.6672326,  0.6371308]), array([ 0.69557522,  0.6064257 ]), array([ 0.68110919,  0.62139918]), array([3390, 2988]))
+
+Manual  2  fold cross validation score
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_cv = x_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_cv = y_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
+0.63311606919
+0.661067936826
+
+Checking with inbuilt function
+[ 0.63311607  0.66106794]
+
+Manual parameter tuning
+Tuning learning rate :
+Score for  0.1 : 0.631545939166
+Score for  1 : 0.653809971778
+Score for  2 : 0.427720288492
+Best parameter :  1
+Tuning number of estimators
+Score for  20 : 0.638758231421
+Score for  25 : 0.640953276889
+Score for  30 : 0.644402634055
+Score for  35 : 0.644716211979
+Score for  40 : 0.648165569144
+Score for  45 : 0.648165569144
+Score for  50 : 0.653809971778
+Score for  55 : 0.653339604892
+Score for  60 : 0.652242082157
+Score for  65 : 0.651458137347
+Best parameter :  50
+
+Max score obtained using AdaBoost Classifier :  0.653809971778
+ROC curve Area = 0.431415287502
+AUC for CV:
+ROC fold 0(area = 0.4592830012)
+ROC fold 1(area = 0.427137867569)
+ROC fold 2(area = 0.430441329935)
+ROC fold 3(area = 0.42467407937)
+ROC fold 4(area = 0.423928243025)
+ROC fold 5(area = 0.439664131022)
+
+
+--KBest
+Applying SelectKBest
+Score  for  1  features :  0.590780809031
+Score  for  2  features :  0.603480714958
+Score  for  3  features :  0.602383192223
+Score  for  4  features :  0.609909062402
+Score  for  5  features :  0.610065851364
+Score  for  6  features :  0.610849796174
+Score  for  7  features :  0.63640639699
+Score  for  8  features :  0.641266854813
+Score  for  9  features :  0.642991533396
+Score  for  10  features :  0.642834744434
+Score  for  11  features :  0.64330511132
+Score  for  12  features :  0.643618689244
+Score  for  13  features :  0.642834744434
+Score  for  14  features :  0.644402634055
+Score  for  15  features :  0.642677955472
+Score  for  16  features :  0.64863593603
+Score  for  17  features :  0.649733458765
+Score  for  18  features :  0.64785199122
+Score  for  19  features :  0.650047036689
+Score  for  20  features :  0.650203825651
+Score  for  21  features :  0.649263091878
+Score  for  22  features :  0.651928504233
+Score  for  23  features :  0.651614926309
+Score  for  24  features :  0.649263091878
+Score  for  25  features :  0.650047036689
+Score  for  26  features :  0.655691439323
+Score  for  27  features :  0.657102539981
+Score  for  28  features :  0.657102539981
+Score  for  29  features :  0.657102539981
+Score  for  30  features :  0.656475384133
+Score  for  31  features :  0.656475384133
+Score  for  32  features :  0.656475384133
+Score  for  33  features :  0.656475384133
+Score  for  34  features :  0.656945751019
+Score  for  35  features :  0.652398871119
+Score  for  36  features :  0.66008153026
+Score  for  37  features :  0.658827218564
+Score  for  38  features :  0.658827218564
+Score  for  39  features :  0.658827218564
+Score  for  40  features :  0.658827218564
+Score  for  41  features :  0.658827218564
+Score  for  42  features :  0.659924741298
+Score  for  43  features :  0.659924741298
+Score  for  44  features :  0.659924741298
+Score  for  45  features :  0.659924741298
+Score  for  46  features :  0.660238319222
+Score  for  47  features :  0.660238319222
+Score  for  48  features :  0.660238319222
+Score  for  49  features :  0.660238319222
+Score  for  50  features :  0.660238319222
+Score  for  51  features :  0.660708686108
+Score  for  52  features :  0.663060520539
+Score  for  53  features :  0.663060520539
+Score  for  54  features :  0.663060520539
+Score  for  55  features :  0.662590153653
+Score  for  56  features :  0.662590153653
+Score  for  57  features :  0.662590153653
+Score  for  58  features :  0.662590153653
+Score  for  59  features :  0.664471621198
+Max score was obtained for :  59  features
+Score :  0.664471621198
+Precision recall f-score support :  (array([ 0.67438616,  0.65175376]), array([ 0.71297935,  0.60943775]), array([ 0.69314597,  0.62988585]), array([3390, 2988], dtype=int64))
+
+Manual  2  fold cross validation score
+cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_cv = x_train[sIndex:fIndex]
+cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_cv = y_train[sIndex:fIndex]
+cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
+cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
+0.63311606919
+0.661067936826
+
+Checking with inbuilt function
+[ 0.63311607  0.66106794]
+
+Manual parameter tuning
+Tuning learning rate :
+Score for  0.1 : 0.645500156789
+Score for  1 : 0.664471621198
+Score for  2 : 0.415647538413
+Best parameter :  1
+Tuning number of estimators
+Score for  20 : 0.653496393854
+Score for  25 : 0.657572906867
+Score for  30 : 0.661649419881
+Score for  35 : 0.660238319222
+Score for  40 : 0.661962997805
+Score for  45 : 0.66462841016
+Score for  50 : 0.664471621198
+Score for  55 : 0.662746942615
+Score for  60 : 0.663687676388
+Score for  65 : 0.664158043274
+Best parameter :  45
+
+Max score obtained using AdaBoost Classifier :  0.66462841016

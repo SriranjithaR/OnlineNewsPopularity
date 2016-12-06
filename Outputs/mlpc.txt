@@ -1,0 +1,243 @@
+--mlpc
+
+--ALL
+Score :  0.578551269991
+Precision recall f-score support :  (array([ 0.58429395,  0.56775068]), array([ 0.71769912,  0.42068273]), array([ 0.64416203,  0.48327566]), array([3390, 2988]))
+
+Manual  2  fold cross validation score
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_cv = x_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_cv = y_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
+0.503070945099
+0.486525444974
+
+Checking with inbuilt function
+[ 0.5414891   0.53685134]
+
+Manual parameter tuning
+Tuning alpha values
+Score for  0.0001 : 0.57698338037
+Score for  0.001 : 0.576513013484
+Score for  0.01 : 0.51066164942
+Score for  0.1 : 0.581059893384
+Score for  1 : 0.534493571653
+Score for  10 : 0.534963938539
+Best parameter :  0.1
+
+Max score obtained using MLPClassifier :  0.496080275949
+ROC curve Area = 0.525158253466
+AUC for CV:
+ROC fold 0(area = 0.488698679565)
+ROC fold 1(area = 0.502255657087)
+ROC fold 2(area = 0.624390258512)
+ROC fold 3(area = 0.606822243701)
+ROC fold 4(area = 0.533601832319)
+ROC fold 5(area = 0.639298156241)
+
+
+--PCA
+Applying PCA
+Score  for  1  features :  0.510348071496
+Score  for  2  features :  0.490906240201
+Score  for  3  features :  0.505017246786
+Score  for  4  features :  0.547193477579
+Score  for  5  features :  0.513483850737
+Score  for  6  features :  0.546879899655
+Score  for  7  features :  0.514581373471
+Score  for  8  features :  0.510504860458
+Score  for  9  features :  0.53731577297
+Score  for  10  features :  0.517403574788
+Score  for  11  features :  0.56632173095
+Score  for  12  features :  0.546409532769
+Score  for  13  features :  0.524929444967
+Score  for  14  features :  0.525243022891
+Score  for  15  features :  0.547820633427
+Score  for  16  features :  0.565224208216
+Score  for  17  features :  0.568987143305
+Score  for  18  features :  0.537158984008
+Score  for  19  features :  0.541705863907
+Score  for  20  features :  0.529946691753
+Score  for  21  features :  0.555816870492
+Score  for  22  features :  0.548604578238
+Score  for  23  features :  0.569457510191
+Score  for  24  features :  0.56553778614
+Score  for  25  features :  0.548447789276
+Score  for  26  features :  0.524459078081
+Score  for  27  features :  0.528849169019
+Score  for  28  features :  0.555346503606
+Score  for  29  features :  0.557071182189
+Score  for  30  features :  0.579492003763
+Score  for  31  features :  0.568203198495
+Score  for  32  features :  0.554405769834
+Score  for  33  features :  0.567262464722
+Score  for  34  features :  0.565224208216
+Score  for  35  features :  0.553465036061
+Score  for  36  features :  0.532925682032
+Score  for  37  features :  0.539981185325
+Score  for  38  features :  0.560834117278
+Score  for  39  features :  0.538570084666
+Score  for  40  features :  0.560677328316
+Score  for  41  features :  0.556914393227
+Score  for  42  features :  0.601285669489
+Score  for  43  features :  0.566008153026
+Score  for  44  features :  0.513954217623
+Score  for  45  features :  0.51144559423
+Score  for  46  features :  0.511288805268
+Score  for  47  features :  0.568359987457
+Score  for  48  features :  0.561147695202
+Score  for  49  features :  0.519755409219
+Score  for  50  features :  0.571495766698
+Score  for  51  features :  0.525870178739
+Score  for  52  features :  0.521636876764
+Score  for  53  features :  0.516462841016
+Score  for  54  features :  0.50611476952
+Score  for  55  features :  0.564126685481
+Score  for  56  features :  0.514111006585
+Score  for  57  features :  0.535591094387
+Score  for  58  features :  0.576042646598
+Score  for  59  features :  0.512386328003
+Max score was obtained for :  42  features
+Score :  0.520852931954
+Precision recall f-score support :  (array([ 0.51485375,  0.43206793]), array([ 0.66460177,  0.2894913 ]), array([ 0.58022148,  0.34669339]), array([3390, 2988]))
+
+Manual  2  fold cross validation score
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_cv = x_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_cv = y_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
+0.59275507646
+0.527074454751
+
+Checking with inbuilt function
+[ 0.54230384  0.51955377]
+
+Manual parameter tuning
+Tuning alpha values
+Score for  0.0001 : 0.557698338037
+Score for  0.001 : 0.535904672311
+Score for  0.01 : 0.562872373785
+Score for  0.1 : 0.542333019755
+Score for  1 : 0.529946691753
+Score for  10 : 0.559736594544
+Best parameter :  0.01
+
+Max score obtained using MLPClassifier :  0.558952649733
+ROC curve Area = 0.579045335718
+AUC for CV:
+ROC fold 0(area = 0.519127829818)
+ROC fold 1(area = 0.581135755023)
+ROC fold 2(area = 0.570672554734)
+ROC fold 3(area = 0.608570016542)
+ROC fold 4(area = 0.543400981245)
+ROC fold 5(area = 0.610300867886)
+
+
+--KBest
+
+Applying SelectKBest
+Score  for  1  features :  0.532141737222
+Score  for  2  features :  0.468485418627
+Score  for  3  features :  0.535904672311
+Score  for  4  features :  0.536531828159
+Score  for  5  features :  0.583411727814
+Score  for  6  features :  0.582941360928
+Score  for  7  features :  0.624960802759
+Score  for  8  features :  0.532141737222
+Score  for  9  features :  0.468485418627
+Score  for  10  features :  0.506271558482
+Score  for  11  features :  0.507369081217
+Score  for  12  features :  0.577453747256
+Score  for  13  features :  0.574317968015
+Score  for  14  features :  0.630291627469
+Score  for  15  features :  0.531357792411
+Score  for  16  features :  0.622295390405
+Score  for  17  features :  0.532141737222
+Score  for  18  features :  0.558952649733
+Score  for  19  features :  0.469112574475
+Score  for  20  features :  0.600344935717
+Score  for  21  features :  0.593916588272
+Score  for  22  features :  0.531514581373
+Score  for  23  features :  0.579335214801
+Score  for  24  features :  0.52210724365
+Score  for  25  features :  0.501567889621
+Score  for  26  features :  0.566635308874
+Score  for  27  features :  0.523988711195
+Score  for  28  features :  0.597679523362
+Score  for  29  features :  0.556600815303
+Score  for  30  features :  0.514581373471
+Score  for  31  features :  0.499059266228
+Score  for  32  features :  0.581059893384
+Score  for  33  features :  0.545939165883
+Score  for  34  features :  0.571809344622
+Score  for  35  features :  0.491219818125
+Score  for  36  features :  0.581059893384
+Score  for  37  features :  0.572593289432
+Score  for  38  features :  0.519755409219
+Score  for  39  features :  0.501411100659
+Score  for  40  features :  0.507682659141
+Score  for  41  features :  0.531514581373
+Score  for  42  features :  0.605989338351
+Score  for  43  features :  0.529476324867
+Score  for  44  features :  0.489024772656
+Score  for  45  features :  0.489181561618
+Score  for  46  features :  0.48322358106
+Score  for  47  features :  0.510818438382
+Score  for  48  features :  0.53198494826
+Score  for  49  features :  0.530573847601
+Score  for  50  features :  0.510504860458
+Score  for  51  features :  0.52743806836
+Score  for  52  features :  0.474129821261
+Score  for  53  features :  0.541392285983
+Score  for  54  features :  0.531671370336
+Score  for  55  features :  0.470210097209
+Score  for  56  features :  0.488867983694
+Score  for  57  features :  0.584038883663
+Score  for  58  features :  0.518030730637
+Score  for  59  features :  0.531514581373
+Max score was obtained for :  14  features
+Score :  0.611320163061
+Precision recall f-score support :  (array([ 1.        ,  0.46863237]), array([  5.89970501e-04,   1.00000000e+00]), array([ 0.00117925,  0.63818881]), array([3390, 2988]))
+
+Manual  2  fold cross validation score
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:21: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_cv = x_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:22: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_cv = y_train[sIndex:fIndex]
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:24: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  x_t = np.concatenate((x_train[0:max(0,sIndex)],x_train[fIndex:n]),axis=0);
+/home/SML/OnlineNewsPopularity/Phase2/cross_validation.py:25: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  y_t = np.concatenate((y_train[0:max(0,sIndex)],y_train[fIndex:n]),axis=0);
+0.539671596891
+0.507771371271
+
+Checking with inbuilt function
+[ 0.47411632  0.58993482]
+
+Manual parameter tuning
+Tuning alpha values
+Score for  0.0001 : 0.547350266541
+Score for  0.001 : 0.535904672311
+Score for  0.01 : 0.60896832863
+Score for  0.1 : 0.599717779868
+Score for  1 : 0.535120727501
+Score for  10 : 0.47177798683
+Best parameter :  0.01
+
+Max score obtained using MLPClassifier :  0.611476952023
+ROC curve Area = 0.679680570858
+AUC for CV:
+ROC fold 0(area = 0.621300862806)
+ROC fold 1(area = 0.644580928953)
+ROC fold 2(area = 0.681824312812)
+ROC fold 3(area = 0.668972680678)
+ROC fold 4(area = 0.495632457874)
+ROC fold 5(area = 0.690727209049)
