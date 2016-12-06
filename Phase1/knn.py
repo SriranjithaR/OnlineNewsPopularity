@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 
 
 #Loading data
-x_train = np.loadtxt('x_train.txt')
+x_train = np.loadtxt('../Data/x_train.txt')
 y_train_binary = np.loadtxt('y_train_binary.txt')
 x_test = np.loadtxt('x_test.txt')
 y_test_binary = np.loadtxt('y_test_binary.txt')

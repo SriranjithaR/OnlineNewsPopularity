@@ -1,7 +1,17 @@
-from fileread import x_train,y_train,x_test,y_test
 import numpy as np
 import time
 import matplotlib.pyplot as plt
+
+#Loading data
+x_train = np.loadtxt('../Data/x_train.txt')
+y_train = np.loadtxt('../Data/y_train.txt')
+y_train_binary = np.loadtxt('../Data/y_train_binary.txt')
+x_test = np.loadtxt('../Data/x_test.txt')
+y_test = np.loadtxt('../Data/y_test.txt')
+y_test_binary = np.loadtxt('../Data/y_test_binary.txt')
+x_orig_train = np.loadtxt('../Data/x_orig_train.txt')
+y_orig_train_binary = np.loadtxt('../Data/y_orig_train_binary.txt')
+
 for i in range(1,59):
 	plt.scatter(x_train[:,i],y_train,c='b')
 	plt.savefig('feature_'+str(i)+'_vs_y')
