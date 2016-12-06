@@ -72,8 +72,6 @@ clf = rfc(n_estimators = opt_n_est, max_depth = opt_max_depth)
 clf.fit (x_train,y_train_binary)
 
 #Printing final result
-#clf = rfc(n_estimators = opt_n_est,max_depth = opt_max_depth)
-#clf.fit (x_train,y_train_binary)
 sc = max(max_depth_scores.values())
 print "\nMax score obtained using RFC : ", sc
 

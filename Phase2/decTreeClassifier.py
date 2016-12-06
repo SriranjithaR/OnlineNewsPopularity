@@ -88,4 +88,4 @@ from DatasetVsAccuracy import DatasetVsAccuracyPlot as dvap
 dvap(clf,x_train,y_train_binary,x_test,y_test_binary,"decTree")
 
 from final_test import finalTest as ft
-ft(clf)
+ft(clf,x_final_test,y_final_test_binary)
