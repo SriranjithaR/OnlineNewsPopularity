@@ -64,8 +64,20 @@ Folder structure and description of files
  	- x_final_test, y_final_test_binary : Test data
  	- y_train_binary, y_test_binary, y_orig_test_binary, y_final_test_binary : Binary forms of train, validation, train + validation data and test output data
 
-4. <<<Wanna put something about phase 1?>>>>
+4. Code under Phase 1
+	4.1. The following programs for regression programs can be run independantly
+		- decisionTreeRegressor.py :Decision Tree
+	 	- ensemble.py : AdaBoost Classifier
+	 	- svr.py : SVR
+	 	- linreg.py : Linear Regression
+	 	- ridge.py : Ridge regression (L2)
 
+	4.2. Feature selection can be configured by changing the parameter num_features
+		- Feature selection can be switched on/off by uncommenting/commenting the code
+		- It uses PCA to transform into number of features provided
+
+	4.3. The programs first print the output for Score of regression then run then convert the output to binary and again print results.
+		
 5. Codes under Phase 2
  	5.1. The following classifier programs can be run independantly
 	 	- decTree.py :Decision Tree
