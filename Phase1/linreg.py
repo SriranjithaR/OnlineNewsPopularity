@@ -1,7 +1,20 @@
-from fileread import x_train,y_train,x_test,y_test
 import numpy as np
 from sklearn import linear_model
+
+
 clf = linear_model.LinearRegression(normalize='false')
+
+#Loading data
+x_train = np.loadtxt('../Data/x_train.txt')
+y_train = np.loadtxt('../Data/y_train.txt')
+y_train_binary = np.loadtxt('../Data/y_train_binary.txt')
+x_test = np.loadtxt('../Data/x_test.txt')
+y_test = np.loadtxt('../Data/y_test.txt')
+y_test_binary = np.loadtxt('../Data/y_test_binary.txt')
+x_orig_train = np.loadtxt('../Data/x_orig_train.txt')
+y_orig_train_binary = np.loadtxt('../Data/y_orig_train_binary.txt')
+
+# Feature selction using PCA
 num_features = 10
 from sklearn.decomposition import PCA
 pca = PCA(n_components=num_features)
