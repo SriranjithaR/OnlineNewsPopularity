@@ -1,0 +1,104 @@
+=======================================================================
+			                  Manual
+=======================================================================
+
+All code has been written in python.
+
+List of libraries used
+
+1. pandas
+2. scikit-learn
+
+##########################################
+Instructions to install required libraries
+##########################################
+
+Installing pip
+--------------
+
+To install the required libraries, you will need `pip`. It is installed by default with Python.
+In case it is not,
+
+1. Download the `get-pip.py` file from https://pip.pypa.io/en/stable/installing/
+2. run command `python get-pip.py`
+
+Install pandas
+--------------
+
+	run command `pip install pandas`
+
+Install scikit-learn
+--------------------
+
+	run command `pip install -U scikit-learn`
+
+##########################################
+Folder structure and description of files
+##########################################
+1. All codes are available in the Codes folder
+   1.1 Codes under Phase 1 contain the work submitted for the first phase of the project. It contains codes for :-
+   - Reading the dataset
+   - Splitting dataset into train, validation and test
+   - Feature selection
+   - Regression algorithms on the training data and parameter tuning using validation set
+
+   1.2 Codes under Phase 2 contain the work done after the first submission and include :-
+   - Converting dataset for classification
+   - Classification algorithms
+   - Additional feature selection mechanisms
+   - Cross validation
+   - Parameter tuning
+   - Graphs for accuracy for different parameter values
+   - ROC curves, AUC calculation
+   - Dataset size Vs Accuracy graphs
+   - Testing tuned algorithms on test data
+
+ 2. All codes are in Python, and can be run 
+ 	- from terminal using >>python <filename> command. Eg python decTree.py
+ 	- from a suitable IDE
+
+ 3. The data after splitting into into train, validation and test are in the "Data" folder 
+ 	- x_orig_train, y_orig_train : Train + validation data ; used for cross validation
+ 	- x_train, y_train : Training data
+ 	- x_test, y_test : Validation data
+ 	- x_final_test, y_final_test_binary : Test data
+ 	- y_train_binary, y_test_binary, y_orig_test_binary, y_final_test_binary : Binary forms of train, validation, train + validation data and test output data
+
+4. <<<Wanna put something about phase 1?>>>>
+
+5. Codes under Phase 2
+ 	5.1. The following classifier programs can be run independantly
+	 	- decTree.py :Decision Tree
+	 	- adaBoostClassifier.py : AdaBoost Classifier
+	 	- knn.py : K Nearest Neighbor
+	 	- rfc.py : Random Forest Classifier
+	 	- logistic.py : Logistic Regression
+	 	- mlpc.py : Multilayer Percepton Classifier
+
+	5.2. Feature selection : Under the section commented as "#Calling feature selection methods",
+
+		- Commenting the second line alone prevents PCA and allows SelectKBest to run
+		- Commenting the third line alone prevents SelectKBest and allows PCA to run
+		- Commenting second and third line prevents any feature selection from running
+
+ 	5.3. Cross validation : Under the section commented as "Cross validation", change the value of folds as necessary. The programs take increasingly longer to run as this value is increased. 
+
+ 	The classifier programs import and use the functions in the following files :-
+ 	- feature_selection.py : For PCA and SelectKBest feature selection
+ 	- cross_validation.py : For k-fold cross validation
+ 	- ROCCurves.py : For ROC plots and AUC calculation
+ 	- DatasetVsAccuracy.py : For Dataset size Vs accuracy plots
+ 	- final_test.py : For testing algorithm with test data
+
+6. To generate new data, run the fileread.py file
+
+7. All figures are saved under the "Figures" folder, under the respective classifier name. Multiple runs of a single algorithm overwrite the original files in these locations
+
+8. The outputs of all classifiers with PCA, SelectKBest and no feature selection are saved in the "Outputs" folder. 
+	- --All : Refers to runs without feature selection
+	- --PCA : Refers to runs with PCA feature selection
+	- --KBest : Refers to runs with SelectKBest feature selection
+
+9. Original data as csv files are under the "OnlineNewsPopularity" folder
+
+10.The "Graphs" folder contains the graphs generated during some runs of the classifiers. These are not overwritten when the classifier algorithms are run. 
