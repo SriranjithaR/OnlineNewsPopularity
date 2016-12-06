@@ -1,7 +1,6 @@
 --NBC
 
 --ALL
-Accuracy Score :  0.498745688304
 Score :  0.498745688304
 Precision recall f-score support :  (array([ 0.66273187,  0.48193604]), array([ 0.1159292,  0.9330656]), array([ 0.19733869,  0.63558646]), array([3390, 2988]))
 

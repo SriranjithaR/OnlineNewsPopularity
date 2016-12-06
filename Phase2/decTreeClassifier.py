@@ -9,12 +9,12 @@ import matplotlib.pyplot as plt
 from feature_selection import feature_selection
 
 #Loading data
-x_train = np.loadtxt('../Data_66/x_train.txt')
-y_train_binary = np.loadtxt('../Data_66/y_train_binary.txt')
-x_test = np.loadtxt('../Data_66/x_test.txt')
-y_test_binary = np.loadtxt('../Data_66/y_test_binary.txt')
-x_orig_train = np.loadtxt('../Data_66/x_orig_train.txt')
-y_orig_train_binary = np.loadtxt('../Data_66/y_orig_train_binary.txt')
+x_train = np.loadtxt('../Data/x_train.txt')
+y_train_binary = np.loadtxt('../Data/y_train_binary.txt')
+x_test = np.loadtxt('../Data/x_test.txt')
+y_test_binary = np.loadtxt('../Data/y_test_binary.txt')
+x_orig_train = np.loadtxt('../Data/x_orig_train.txt')
+y_orig_train_binary = np.loadtxt('../Data/y_orig_train_binary.txt')
 
 #Modeling classifier
 clf = dtc(max_depth = 3)
@@ -23,12 +23,10 @@ clf = dtc(max_depth = 3)
 fs = feature_selection()
 # clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
 # clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
-
-#Printing scores
 clf.fit (x_train,y_train_binary)
 y_out = clf.predict(x_test)
-aScore = accuracy_score(y_test_binary,y_out)
-print "Accuracy Score : ",aScore
+
+#Printing scores
 score = clf.score(x_test,y_test_binary)
 print "Score : ", score
 print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
@@ -72,12 +70,13 @@ ax = fig.add_subplot(111)
 
 x_axis = np.array(range(2,20,2))
 y_axis = list(max_depth_scores.values())
+#plt.scatter(x_axis,y_axis)
 plt.plot(x_axis,y_axis)
 plt.xlabel('Max_depth')
 plt.ylabel('Scores')
 
 plt.title("DecTreeClassifier ")
-plt.savefig('DecTreeClassifier.png')
+plt.savefig('Figures/decTree/DecTreeClassifier.png')
 
 #Plotting ROC curve
 from ROCCurves import ROCCurves as ROC

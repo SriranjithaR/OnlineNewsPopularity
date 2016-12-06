@@ -7,7 +7,7 @@ Created on Thu Dec 01 23:39:23 2016
 import numpy as np
 import matplotlib.pyplot as plt
 
-def DatasetVsAccuracyPlot(clf,x_train,y_train,x_test,y_test,classifier):
+def DatasetVsAccuracyPlot(clf,x_train,y_train,x_test,y_test,classifierName):
     
     #Calculate scores based on dataset size
     plot = {}
@@ -30,7 +30,8 @@ def DatasetVsAccuracyPlot(clf,x_train,y_train,x_test,y_test,classifier):
     plt.xlabel('Percentage of dataset')
     plt.ylabel('Scores')
     
-    savename = classifier + "DVAP.png"
+    savename = 'Figures/' + classifierName + '/'+ classifierName + 'DVAP.png'
+    
     plt.title("Dataset size Vs Accuracy plot ")
     plt.savefig(savename)
         

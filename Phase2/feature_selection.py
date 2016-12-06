@@ -25,16 +25,14 @@ class feature_selection:
         skbest = SelectKBest(f_classif, k = max_score_nf )
         x_train = skbest.fit_transform(x_train,y_train_binary)
         x_test = skbest.transform(x_test)
-
         clf.fit (x_train,y_train_binary)
         y_out = clf.predict(x_test)
-        score = clf.score(x_test,y_test_binary)
-        print "Score : ", score
         return (clf,x_train,x_test,y_out)
 
     def PCASelection(self,x_train,y_train_binary,x_test,y_test_binary
     ,clf):
         #Applying PCA
+        print "\nApplying PCA"
         pca_scores = {}
         for nf in list(range(1,60)):
             pca = PCA(n_components= nf )
@@ -54,6 +52,4 @@ class feature_selection:
 
         clf.fit (x_train,y_train_binary)
         y_out = clf.predict(x_test)
-        score = clf.score(x_test,y_test_binary)
-        print "Score : ", score
         return (clf,x_train,x_test,y_out)

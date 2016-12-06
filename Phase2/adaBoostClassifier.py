@@ -23,12 +23,10 @@ clf = abc()
 fs = feature_selection()
 # clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
 clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
-
-#Printing scores
 clf.fit (x_train,y_train_binary)
 y_out = clf.predict(x_test)
-aScore = accuracy_score(y_test_binary,y_out)
-print "Accuracy Score : ",aScore
+
+#Printing scores
 score = clf.score(x_test,y_test_binary)
 print "Score : ", score
 print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
@@ -77,18 +75,16 @@ clf.fit (x_train,y_train_binary)
 sc = clf.score(x_test,y_test_binary)
 print "\nMax score obtained using AdaBoost Classifier : ", sc
 
-
 # Plotting figure
-fig = plt.figure()
-ax = fig.add_subplot(111)
-
+fig = plt.figure(1)
 x_axis = list(n_est_scores.keys())
 y_axis = list(n_est_scores.values())
-plt.plot(x_axis,y_axis)
+plt.scatter(x_axis,y_axis)
 plt.xlabel('No. of estimators')
 plt.ylabel('Scores')
-plt.savefig('AdaBoostClassifier1.png')
+plt.savefig('Figures/adaBoost/AdaBoostClassifier1.png')
 
+fig = plt.figure(2)
 learn_rate_scores = {}
 for i in [0.1,1,2]:
     clf = abc(learning_rate = i,n_estimators=opt_n_est)
@@ -97,10 +93,10 @@ for i in [0.1,1,2]:
     learn_rate_scores[i]=sc
 x_axis = list(learn_rate_scores.keys())
 y_axis = list(learn_rate_scores.values())
-plt.plot(x_axis,y_axis)
+plt.scatter(x_axis,y_axis)
 plt.xlabel('Learning rate')
 plt.ylabel('Scores')
-plt.savefig('AdaBoostClassifier2.png')
+plt.savefig('Figures/adaBoost/AdaBoostClassifier2.png')
 
 #Plotting ROC curve
 from ROCCurves import ROCCurves as ROC

@@ -21,15 +21,13 @@ y_orig_train_binary = np.loadtxt('../Data/y_orig_train_binary.txt')
 clf = rfc()
 
 #Calling feature selection methods
-fs = feature_selection()
-# clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
-clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
+#fs = feature_selection()
+#clf,x_train,x_test,y_out = fs.PCASelection(x_train,y_train_binary,x_test,y_test_binary,clf)
+#clf,x_train,x_test,y_out = fs.KBest(x_train,y_train_binary,x_test,y_test_binary,clf)
 clf.fit (x_train,y_train_binary)
 y_out = clf.predict(x_test)
         
 #Printing scores
-aScore = accuracy_score(y_test_binary,y_out)
-print "Accuracy Score : ",aScore
 score = clf.score(x_test,y_test_binary)
 print "Score : ", score
 print "Precision recall f-score support : " , prfs(y_test_binary,y_out)
@@ -58,12 +56,11 @@ for i in list(range(10,120,10)):
     n_est_scores[i]=sc
 opt_n_est = max(n_est_scores,key = n_est_scores.get)
 print "Best parameter : ",opt_n_est
-clf = rfc(n_estimators = opt_n_est)
 
 print "\nTuning max depth"
 max_depth_scores = {}
 for i in list(range(5,30,5)):
-    clf = rfc(max_depth = i)
+    clf = rfc(max_depth = i,n_estimators = opt_n_est)
     clf.fit (x_train,y_train_binary)
     sc = clf.score(x_test,y_test_binary)
     print 'Score for ',i,':',sc
@@ -76,18 +73,22 @@ clf.fit (x_train,y_train_binary)
 #Printing final result
 #clf = rfc(n_estimators = opt_n_est,max_depth = opt_max_depth)
 #clf.fit (x_train,y_train_binary)
-sc = clf.score(x_test,y_test_binary)
+sc = max(max_depth_scores.values())
 print "\nMax score obtained using decision tree : ", sc
 
 # Plotting figure
+
+fig = plt.figure(1)
 x_axis = list(max_depth_scores.keys())
 y_axis = list(max_depth_scores.values())
 plt.scatter(x_axis,y_axis)
 plt.xlabel('max_depth')
 plt.ylabel('scores')
 
-plt.savefig('RandomForestClassifier1.png')
+plt.savefig('Figures/rfc/RandomForestClassifier1.png')
 
+
+fig = plt.figure(2)
 n_est_scores = {}
 for i in list(range(10,120,10)):
     clf = rfc(n_estimators = i,max_depth = opt_max_depth)
@@ -98,9 +99,10 @@ for i in list(range(10,120,10)):
 x_axis = list(n_est_scores.keys())
 y_axis = list(n_est_scores.values())
 plt.scatter(x_axis,y_axis)
+#plt.plot(x_axis,y_axis)
 plt.xlabel('No. of estimators')
 plt.ylabel('scores')
-plt.savefig('RandomForestClassifier2.png')
+plt.savefig('Figures/rfc/RandomForestClassifier2.png')
 
 #Plotting ROC curve
 from ROCCurves import ROCCurves as ROC
